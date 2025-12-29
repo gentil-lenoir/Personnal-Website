@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 80vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +35,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.goog-te-banner {
+  display: none !important;
+}
+
+/* 🔥 Supprime aussi le logo Google "Fourni par Google" */
+.goog-logo-link,
+.goog-te-gadget span,
+.goog-te-gadget-simple img {
+  opacity: 0 !important;
+}
+
+/* 🔥 Cache le bouton "Afficher l’original" et "Options" */
+.goog-te-banner-content,
+.goog-te-banner-frame,
+.goog-te-banner-frame * {
+  display: none !important;
+}
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+.goog-te-menu-value:hover {
+  text-decoration: none !important;
 }

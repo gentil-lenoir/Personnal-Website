@@ -1,0 +1,475 @@
+.portfolio-section {
+  background: linear-gradient(135deg, #0f0f11 0%, #18181b 50%, #0f0f11 100%);
+  color: #fff;
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border-radius: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: sectionEntrance 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet de particules animées en arrière-plan */
+.portfolio-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.05) 0%, transparent 50%);
+  animation: particleFloat 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes sectionEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+  }
+}
+
+.portfolio-title {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -1px;
+  position: relative;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    transform: scale(1);
+  }
+  to {
+    text-shadow: 0 0 40px rgba(56, 189, 248, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+/* Section Compétences avec Animations Avancées */
+.skills-section {
+  margin: 4rem 0;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(35, 35, 42, 0.6), rgba(45, 45, 55, 0.6));
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 1s ease-out 0.3s both;
+}
+
+.skills-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.one-skill {
+  margin-bottom: 2rem;
+  position: relative;
+  animation: skillEntrance 0.8s ease-out both;
+}
+
+/* Animation en cascade pour les skills */
+.one-skill:nth-child(1) { animation-delay: 0.5s; }
+.one-skill:nth-child(2) { animation-delay: 0.6s; }
+.one-skill:nth-child(3) { animation-delay: 0.7s; }
+.one-skill:nth-child(4) { animation-delay: 0.8s; }
+.one-skill:nth-child(5) { animation-delay: 0.9s; }
+.one-skill:nth-child(6) { animation-delay: 1.0s; }
+.one-skill:nth-child(7) { animation-delay: 1.1s; }
+.one-skill:nth-child(8) { animation-delay: 1.2s; }
+.one-skill:nth-child(9) { animation-delay: 1.3s; }
+
+@keyframes skillEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.skill-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #e2e8f0;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-percentage {
+  color: #38bdf8;
+  font-weight: 700;
+  font-size: 1rem;
+  animation: countUp 2s ease-out 1s both;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skillbar {
+  background: rgba(255, 255, 255, 0.1);
+  height: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.skill-level {
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: skillbarFill 1.5s ease-out 0.5s both, gradientShift 3s ease-in-out infinite;
+}
+
+.skill-level::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes skillbarFill {
+  from {
+    width: 0%;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+  }
+  50% {
+    background: linear-gradient(90deg, #818cf8, #38bdf8, #818cf8);
+  }
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Section Portfolio avec Animations Spectaculaires */
+.cards-portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.one-portfolio {
+  background: linear-gradient(135deg, rgba(35, 35, 42, 0.8), rgba(45, 45, 55, 0.8));
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardEntrance 0.8s ease-out both;
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+}
+
+/* Animation en cascade pour les cartes */
+.one-portfolio:nth-child(1) { animation-delay: 1.4s; }
+.one-portfolio:nth-child(2) { animation-delay: 1.5s; }
+.one-portfolio:nth-child(3) { animation-delay: 1.6s; }
+.one-portfolio:nth-child(4) { animation-delay: 1.7s; }
+.one-portfolio:nth-child(5) { animation-delay: 1.8s; }
+
+@keyframes cardEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.one-portfolio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.one-portfolio:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 
+    0 25px 50px rgba(56, 189, 248, 0.3),
+    0 0 80px rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.one-portfolio:hover::before {
+  opacity: 1;
+}
+
+.one-portfolio img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease;
+  filter: grayscale(0.3) brightness(0.9);
+}
+
+.one-portfolio:hover img {
+  transform: scale(1.1) rotate(2deg);
+  filter: grayscale(0) brightness(1.1);
+}
+
+.one-portfolio h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: #38bdf8;
+  font-size: 1.4rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.one-portfolio:hover h3 {
+  color: #fff;
+  transform: translateX(10px);
+}
+
+.one-portfolio p {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.one-portfolio:hover p {
+  color: #e2e8f0;
+  transform: translateX(5px);
+}
+
+/* Effet de bordure animée au survol */
+.one-portfolio::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #38bdf8, #818cf8, #38bdf8, #818cf8);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.one-portfolio:hover::after {
+  opacity: 1;
+}
+
+/* Section Titles Animés */
+.skills-title, .portfolio-title-main {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 4rem 0 2rem 0;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+  }
+}
+
+.skills-title::after, .portfolio-title-main::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  animation: lineExpand 2s ease-out infinite;
+}
+
+@keyframes lineExpand {
+  0%, 100% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 100px;
+    opacity: 1;
+  }
+}
+
+/* Separator Animé */
+.animated-separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38bdf8, #818cf8, #38bdf8, transparent);
+  margin: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-separator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: separatorShine 3s ease-in-out infinite;
+}
+
+@keyframes separatorShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Animations de base */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+  }
+  
+  .portfolio-title {
+    font-size: 2.5rem;
+  }
+  
+  .skills-title, .portfolio-title-main {
+    font-size: 2rem;
+  }
+  
+  .cards-portfolio {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .one-portfolio {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-title {
+    font-size: 2rem;
+  }
+  
+  .skills-section {
+    padding: 1.5rem;
+  }
+  
+  .skill-title {
+    font-size: 1.1rem;
+  }
+}
+.link-item a{
+  color: red;
+}

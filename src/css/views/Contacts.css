@@ -1,0 +1,424 @@
+.contacts-section {
+  background: linear-gradient(135deg, #0f0f11 0%, #18181b 50%, #0f0f11 100%);
+  color: #fff;
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border-radius: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: sectionReveal 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet de particules animées */
+.contacts-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(56, 189, 248, 0.03) 0%, transparent 50%);
+  animation: particleOrbit 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes particleOrbit {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    transform: rotate(120deg) scale(1.1);
+  }
+  66% {
+    transform: rotate(240deg) scale(0.9);
+  }
+}
+
+.contacts-title {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -1px;
+  position: relative;
+  animation: titleBounce 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+@keyframes titleBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(20px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.contacts-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #38bdf8, #818cf8, #38bdf8, transparent);
+  border-radius: 2px;
+  animation: titleUnderline 2s ease-in-out infinite;
+}
+
+@keyframes titleUnderline {
+  0%, 100% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 150px;
+    opacity: 1;
+  }
+}
+
+.contacts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animation d'entrée en cascade pour les cartes */
+.contact-card {
+  background: linear-gradient(135deg, rgba(35, 35, 42, 0.8), rgba(45, 45, 55, 0.8));
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardFlyIn 0.8s ease-out both;
+  opacity: 0;
+  transform: translateY(50px) rotateX(90deg);
+}
+
+/* Animation en cascade pour chaque carte */
+.contact-card:nth-child(1) { animation-delay: 0.5s; }
+.contact-card:nth-child(2) { animation-delay: 0.6s; }
+.contact-card:nth-child(3) { animation-delay: 0.7s; }
+.contact-card:nth-child(4) { animation-delay: 0.8s; }
+.contact-card:nth-child(5) { animation-delay: 0.9s; }
+.contact-card:nth-child(6) { animation-delay: 1.0s; }
+.contact-card:nth-child(7) { animation-delay: 1.1s; }
+.contact-card:nth-child(8) { animation-delay: 1.2s; }
+
+@keyframes cardFlyIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.contact-card::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #38bdf8, #818cf8, #38bdf8, #818cf8);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: borderFlow 3s linear infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.contact-card:hover {
+  transform: translateY(-15px) scale(1.05) rotate(2deg);
+  box-shadow: 
+    0 30px 60px rgba(56, 189, 248, 0.4),
+    0 0 100px rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.6);
+}
+
+.contact-card:hover::before {
+  opacity: 1;
+}
+
+.contact-card:hover::after {
+  opacity: 1;
+}
+
+/* Effet de pulse au survol */
+.contact-card:hover .contact-icon {
+  animation: iconPulse 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.4s ease;
+  border-radius: 12px;
+  padding: 8px;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.contact-type {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-type {
+  color: #fff;
+  transform: translateX(10px);
+}
+
+.contact-value {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+}
+
+.contact-card:hover .contact-value {
+  color: #fff;
+  background: rgba(56, 189, 248, 0.1);
+  border-left: 3px solid #38bdf8;
+  transform: translateX(5px);
+}
+
+.contact-suggestion {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border-left: 2px solid rgba(56, 189, 248, 0.3);
+}
+
+.contact-card:hover .contact-suggestion {
+  color: #cbd5e1;
+  background: rgba(56, 189, 248, 0.05);
+  transform: translateX(5px);
+}
+
+/* Styles spécifiques pour chaque type de contact */
+.contact-card[data-type="Email"] .contact-icon {
+  background: linear-gradient(135deg, rgba(234, 67, 53, 0.2), rgba(56, 189, 248, 0.2));
+}
+
+.contact-card[data-type="WhatsApp"] .contact-icon {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(56, 189, 248, 0.2));
+}
+
+.contact-card[data-type="LinkedIn"] .contact-icon {
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.2), rgba(56, 189, 248, 0.2));
+}
+
+.contact-card[data-type="GitHub"] .contact-icon {
+  background: linear-gradient(135deg, rgba(51, 51, 51, 0.2), rgba(56, 189, 248, 0.2));
+}
+
+.contact-card[data-type="Facebook"] .contact-icon {
+  background: linear-gradient(135deg, rgba(24, 119, 242, 0.2), rgba(56, 189, 248, 0.2));
+}
+
+.contact-card[data-type="Telegram"] .contact-icon {
+  background: linear-gradient(135deg, rgba(0, 136, 204, 0.2), rgba(56, 189, 248, 0.2));
+}
+
+.contact-card[data-type="Instagram"] .contact-icon {
+  background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(56, 189, 248, 0.2));
+}
+
+.contact-card[data-type="QRcode"] .contact-icon {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(129, 140, 248, 0.2));
+}
+
+/* Animation spéciale pour QR Code */
+.contact-card[data-type="QRcode"]:hover .contact-value {
+  animation: qrGlow 2s ease-in-out infinite;
+}
+
+@keyframes qrGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+  }
+}
+
+/* Lien stylisé */
+.contact-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.contact-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.contact-link:hover::before {
+  left: 100%;
+}
+
+.contact-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+}
+
+/* Style pour contact non disponible */
+.contact-card[data-type="Instagram"] .contact-value {
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contacts-section {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+  }
+  
+  .contacts-title {
+    font-size: 2.5rem;
+  }
+  
+  .contacts-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .contact-card {
+    padding: 1.5rem;
+  }
+  
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .contact-type {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-title {
+    font-size: 2rem;
+  }
+  
+  .contact-card {
+    padding: 1.2rem;
+  }
+  
+  .contact-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-icon {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+}

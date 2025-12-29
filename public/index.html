@@ -1,43 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
+      <!-- Balises techniques de base -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#000000" />
+      
+      <!-- Favicon et manifest -->
+      <link rel="icon" href="./favicon.ico" />
+      <link rel="apple-touch-icon" href="./logo192.png" />
+      <link rel="manifest" href="./manifest.json" />
+
+      <link type="text/plain" rel="author" href="humans.txt" />
+
+
+      <!-- 🧠 SEO : Titre + Description -->
+      <title>Gentil Le NoiR | Développeur Web, Ingénieur Électronique & Créateur Numérique</title>
+      <meta name="description" content="Portfolio officiel de Gentil Le NoiR MALIYAMUNGU. Développeur web, ingénieur en électronique, créateur de solutions numériques et innovantes. Découvrez ses projets, compétences et services." />
+
+      <!-- 🔍 SEO : Mots-clés -->
+      <meta name="keywords" content="Gentil Le NoiR, Gentil Le NoiR MALIYAMUNGU, développeur web, ingénieur électronique, site personnel, portfolio développeur, Congo RDC, Goma, web vitrine, projet numérique, création site, développement, services numériques, réact, Laravel, JavaScript, PHP, HTML, CSS" />
+
+      <!-- 👤 Auteur -->
+      <meta name="author" content="Gentil Le NoiR MALIYAMUNGU" />
+
+      <!-- 🤖 Indexation SEO -->
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
+
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Gentil Le NoiR | Développeur Web & Ingénieur Électronique" />
+      <meta property="og:description" content="Découvrez le portfolio professionnel de Gentil Le NoiR MALIYAMUNGU. Expert en développement web et électronique." />
+      <meta property="og:image" content="/logo192.png" /> 
+      <meta property="og:url" content="https://gentil-lenoir.vercel.app" />
+      <meta property="og:site_name" content="Gentil Le NoiR" />
+
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Gentil Le NoiR",
+      "image": "/img/logo.png",
+      "url": "https://gentil-lenoir.vercel.app",
+      "sameAs": ["https://github.com/gentil-lenoir", "https://www.linkedin.com/in/gentil-le-noir-mali-ya-mungu-651751289"]
+    }
+    </script>
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>Gentil Le NoiR Maliyamungu B</title>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <style>
+    .goog-te-banner-frame,
+    .goog-te-menu-frame,
+    .goog-te-menu-value,
+    .goog-te-gadget,
+    .goog-te-spinner-pos,
+    .goog-te-balloon-frame,
+    .goog-tooltip,
+    #goog-gt-tt,
+    .skiptranslate,
+    .goog-te-banner-frame.slideIn,
+    .goog-te-banner-frame.slideOut {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      z-index: -9999 !important;
+    }
+    </style>
+    
+    <!-- 🛡️ Script de protection Google Translate optimisé -->
+    <script>
+      // Version ultra-simplifiée pour éviter les conflits avec React
+      function hideGoogleTranslateElements() {
+        try {
+          const elements = document.querySelectorAll(
+            '.goog-te-banner-frame, .goog-te-banner, [class*="goog-te"]'
+          );
+          elements.forEach(el => {
+            el.style.display = 'none';
+            el.style.visibility = 'hidden';
+          });
+        } catch (e) {
+          // Silencieux pour éviter les erreurs console
+        }
+      }
+
+      // Masquer une seule fois au chargement
+      hideGoogleTranslateElements();
+
+      // Exposer la fonction pour React
+      window.hideGoogleTranslateElements = hideGoogleTranslateElements;
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1907809566957486"
+        crossorigin="anonymous"></script>
+    <!-- Blocs -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-1907809566957486"
+        data-ad-slot="3605127145"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </body>
 </html>

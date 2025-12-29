@@ -1,0 +1,9 @@
+/* TEAM */
+Developer: Gentil Le NoiR MALIYAMUNGU
+Site: https://gentillenoir.vercel.app
+Location: Goma, RDC
+Twitter: @TonPseudoTwitter
+Skills: React, Laravel, PHP, Electron, HTML, CSS, JS, SQL
+
+/* THANKS */
+Technology: React, Laravel, Vite, PHP, Electron.js, Electronic HTML CSS JavaScript

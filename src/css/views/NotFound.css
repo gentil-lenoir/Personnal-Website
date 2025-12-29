@@ -1,0 +1,23 @@
+.notfound-section {
+  background: #18181b;
+  color: #fff;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 4rem auto 2rem auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.notfound-section h1 {
+  color: #38bdf8;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.notfound-section a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+}
+.notfound-section a:hover {
+  text-decoration: underline;
+}
