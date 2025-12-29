@@ -129,9 +129,19 @@ const ContactForm: React.FC = () => {
       setButtonState('error');
       
       // Message d'erreur personnalisé pour la simulation
-      const errorMessage = error.message.includes('serveur') 
-        ? '❌ Serveur simulé non disponible. En production, le message serait envoyé à gentillenoir075@outlook.com'
-        : '❌ ' + error.message + ' (Simulation)';
+      const errorMessage = (() => {
+        if (error instanceof Error) {
+          return error.message.includes('serveur') 
+            ? '❌ Serveur simulé non disponible. En production, le message serait envoyé à gentillenoir075@outlook.com'
+            : '❌ ' + error.message + ' (Simulation)';
+        } else if (typeof error === 'string') {
+          return error.includes('serveur')
+            ? '❌ Serveur simulé non disponible. En production, le message serait envoyé à gentillenoir075@outlook.com'
+            : '❌ ' + error + ' (Simulation)';
+        } else {
+          return '❌ Une erreur inconnue est survenue (Simulation)';
+        }
+      })();
       
       toast.error(errorMessage, {
         position: "bottom-right",
@@ -149,8 +159,7 @@ const ContactForm: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
+    
   const getButtonText = () => {
     switch (buttonState) {
       case 'loading':
