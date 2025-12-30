@@ -109,15 +109,10 @@ const ContactForm: React.FC = () => {
               Simulation en cours...
             </>
           ) : (
-            '📤 Tester l\'envoi (échouera)'
+            '📤 Eenvoi'
           )}
         </button>
 
-        <div className="form-footer">
-          <p className="simulation-notice">
-            ⚠️ Ce formulaire est en mode simulation. Aucun message n'est réellement envoyé.
-          </p>
-        </div>
       </form>
 
       {showMessage && (

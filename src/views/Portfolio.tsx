@@ -87,9 +87,9 @@ const Portfolio = () => {
 
   return (
     <section className="portfolio-section" ref={sectionRef}>
-      <h1 className="portfolio-title">Portfolio de Gentil</h1>
+      <h1 className="portfolio-title">Portfolio de <span translate='no'>Gentil</span></h1>
 
-      <h2 className="skills-title">Les Compétences de Gentil</h2>
+      <h2 className="skills-title">Les Compétences de <span translate='no'>Gentil</span></h2>
       
       <section className="skills-section">
         {skillsData.map((skill, idx) => (
@@ -112,7 +112,7 @@ const Portfolio = () => {
       <div className="animated-separator"></div>
 
       <section>
-        <h2 className="portfolio-title-main">Le Portfolio de Gentil</h2>
+        <h2 className="portfolio-title-main">Le Portfolio de <span translate='no'>Gentil</span></h2>
         <div className="cards-portfolio">
           {portfolioData.map((item, idx) => (
             <div className="one-portfolio" key={idx}>
