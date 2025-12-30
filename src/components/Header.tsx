@@ -2,6 +2,17 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../css/components/Header.css';
 
+declare global {
+  interface Window {
+    google: {
+      translate: {
+        TranslateElement: new (options: any, elementId: string) => void;
+      };
+    };
+    googleTranslateElementInit: () => void;
+  }
+}
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
