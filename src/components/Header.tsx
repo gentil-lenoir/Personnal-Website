@@ -80,7 +80,7 @@ const Header = () => {
       const translateInstance = new window.google.translate.TranslateElement({
         pageLanguage: 'fr',
         includedLanguages: languages.map(l => l.code).join(','),
-        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+        layout: 0,
         autoDisplay: false
       }, 'google_translate_element');
 

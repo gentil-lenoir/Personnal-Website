@@ -31,7 +31,7 @@ const GoogleTranslate = () => {
           {
             pageLanguage: 'fr',
             includedLanguages: 'fr,en,es,de,pt,it,ru,zh,ja,ko,ar',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            layout: 0,
             autoDisplay: false
           },
           'google_translate_element'
