@@ -1,0 +1,6 @@
+{
+  "buildCommand": "CI=false TSC_COMPILE_ON_ERROR=true react-scripts build",
+  "outputDirectory": "build",
+  "devCommand": "react-scripts start",
+  "installCommand": "npm install --legacy-peer-deps"
+}

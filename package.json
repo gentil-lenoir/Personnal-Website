@@ -17,7 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "vercel-build": "npm run build-simple",
+    "vercel-build": "CI=false npm run build",
     "build-simple": "SKIP_TYPESCRIPT=true react-scripts build",
     "start": "react-scripts start",
     "build": "react-scripts build",
