@@ -4,7 +4,8 @@ import loadable from '@loadable/component';
 import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';
 import Loading from './components/Loadding.tsx';
-import { Analytics } from "@vercel/analytics/react" 
+import { Analytics } from "@vercel/analytics/react"
+import './ignore-ts-errors.ts';
 
 const Home = loadable(() => import('./views/Home.tsx'));
 const Bio = loadable(() => import('./views/Bio.tsx'));
