@@ -1,6 +1,6 @@
 // Déclaration globale pour Google Translate
 interface Window {
-  googleTranslateElementInit: () => void;
+  googleTranslateElementInit?: () => void;
 }
 
 declare namespace google {
