@@ -4,7 +4,7 @@ import loadable from '@loadable/component';
 import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';
 import Loading from './components/Loadding.tsx';
-// import { Analytics } from "@vercel/analytics/react" 
+import { Analytics } from "@vercel/analytics/react" 
 
 const Home = loadable(() => import('./views/Home.tsx'));
 const Bio = loadable(() => import('./views/Bio.tsx'));
@@ -16,7 +16,7 @@ const PDFViewer = loadable(() => import('./views/PDFViewer.tsx'));
 
 const App = () => (
   <Router>
-    {/* <Analytics /> */}
+    <Analytics />
     <Header />
     <main style={{ minHeight: '70vh' }}>
       <Suspense fallback={<Loading />}>
