@@ -1,112 +1,374 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../css/views/Home.css';
 import ContactForm from '../components/ContactForm.tsx';
 
 const Home = () => {
   const gentilAge = new Date().getFullYear() - 2007;
   const [isVisible, setIsVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const sectionsRef = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+            setActiveSection(entry.target.id || 'hero');
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px' }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
-  const ContactCard = (label: string, value: string, icon: string) => (
-    <div className="one-contact">
-      <img src={icon} alt={label} className="contact-icon" />
-      <div>
-        <h4>{label}</h4>
-        <p>{value}</p>
-      </div>
-    </div>
-  );
+  // Function to add sections to ref
+  const addToRefs = (el: HTMLElement | null) => {
+    if (el && !sectionsRef.current.includes(el)) {
+      sectionsRef.current.push(el);
+    }
+  };
 
   return (
-    <section className={`home-page ${isVisible ? 'visible' : ''}`}>
-      <h1 className="welcomes-h1">
-        Bienvenue sur le site de <span translate="no"> Gentil Le NoiR M.B.</span>
-      </h1>
+    <main className="home">
+      {/* Navigation Progress Bar */}
+      <div className="progress-bar" style={{ width: `${(sectionsRef.current.findIndex(s => s.id === activeSection) + 1) * 25}%` }} />
 
-      <div className="gentil-passeport-container">
-        <img 
-          src="/img/logo.png" 
-          className="gentil-passeport" 
-          alt="Gentil Le NoiR" 
-          loading="lazy"
-        />
-      </div>
-
-      <p className="gentil-description">
-        <strong translate="no">GENTIL LE NOIR MALIYAMUNGU B</strong><br />
-        <mark>Développeur Web</mark> | <mark>Electronicien</mark> | <mark>Informaticien</mark> | <mark>Programmeur</mark>
-      </p>
-
-      <a className="link" href="/images">
-        📸 VOIR SES IMAGES
-      </a>
-
-      <section className="contacts-section">
-        <h3>Contacts</h3>
-        {ContactCard("WhatsApp", "+243978089552", "/img/whatsapp.png")}
-        {ContactCard("Email", "gentillenoir075@outlook.com", "/img/gmail.png")}
-        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-          <a href="/contacts" style={{ color: '#38bdf8', textDecoration: 'none' }}>
-            📞 voir plus ...
-          </a>
+      {/* Hero Section */}
+      <section id="hero" className="hero-section" ref={addToRefs}>
+        <div className="hero-container">
+          <div className="hero-grid">
+            <div className="hero-content">
+              <div className="hero-badge">Développeur Full Stack & Electronicien</div>
+              <h1 className="hero-title">
+                <span className="hero-title-greeting">Bonjour, je suis</span>
+                <span className="hero-title-name">Gentil Le NoiR M.B.</span>
+              </h1>
+              <p className="hero-description">
+                Je transforme vos idées en expériences numériques exceptionnelles. 
+                Développeur web passionné, ingénieur electronicien et étudiant en 
+                Software Engineering à UNILAK/Kigali.
+              </p>
+              <div className="hero-cta">
+                <a href="/portfolio" className="btn btn-primary">
+                  Voir mes projets
+                  <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+                <a href="/contacts" className="btn btn-outline">
+                  Me contacter
+                </a>
+              </div>
+              <div className="hero-stats">
+                <div className="stat-item">
+                  <span className="stat-number">5+</span>
+                  <span className="stat-label">Années d'expérience</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-number">50+</span>
+                  <span className="stat-label">Projets réalisés</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-number">30+</span>
+                  <span className="stat-label">Clients satisfaits</span>
+                </div>
+              </div>
+            </div>
+            <div className="hero-image">
+              <div className="hero-image-wrapper">
+                <img 
+                  src="/img/gentil-sur-pc.jpg" 
+                  alt="Gentil Le NoiR au travail"
+                  className="hero-img"
+                  loading="eager"
+                />
+                <div className="hero-image-overlay"></div>
+                <div className="hero-image-badge">
+                  <span className="badge-dot"></span>
+                  Disponible pour missions
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-scroll-indicator">
+          <span>Scroll</span>
+          <div className="scroll-line"></div>
         </div>
       </section>
 
-      <ContactForm />
-
-      <section className="competences">
-        <h2>Compétences Professionnelles</h2>
-
-        <h4>🚀 Développement Web</h4>
-        <p>Il conçoit des sites interactifs, responsives et modernes, aussi bien en Front-End qu'en Back-End, avec des frameworks puissants.</p>
-
-        <h4>💻 Informatique</h4>
-        <p>Il maîtrise les outils bureautiques, les systèmes numériques et informatiques spécialisés, avec une bonne culture technique.</p>
-
-        <h4>🔌 Électronique</h4>
-        <p>Il réalise des montages électroniques, des projets Arduino, et sait diagnostiquer, souder et programmer des composants.</p>
-
-        <h4>👨‍💻 Programmation</h4>
-        <p>Il développe des applications web, mobiles, desktop, et embarquées, combinant ses compétences logicielles et électroniques.</p>
+      {/* About Section */}
+      <section id="about" className="about-section" ref={addToRefs}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-subtitle">Qui suis-je ?</span>
+            <h2 className="section-title">À Propos de Moi</h2>
+          </div>
+          <div className="about-grid">
+            <div className="about-content">
+              <p className="about-text">
+                <strong>Gentil Le NoiR Maliyamungu B.</strong>, né en 2007 au Sud-Kivu 
+                (République Démocratique du Congo), est un développeur web passionné 
+                et electronicien expérimenté de <mark>{gentilAge} ans</mark>.
+              </p>
+              <p className="about-text">
+                Actuellement étudiant en <strong>Software Engineering à UNILAK/Kigali</strong>, 
+                je combine mes compétences techniques avec une solide formation académique 
+                pour créer des solutions innovantes.
+              </p>
+              <p className="about-text">
+                En tant que fondateur et co-créateur du projet <strong>Azenium</strong>, 
+                je développe une plateforme de partenariat et d'assistance financière 
+                qui vise à révolutionner l'accès aux opportunités en Afrique.
+              </p>
+              <div className="about-highlights">
+                <div className="highlight-item">
+                  <span className="highlight-icon">🚀</span>
+                  <span>5+ projets majeurs</span>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">💡</span>
+                  <span>Innovation constante</span>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">🤝</span>
+                  <span>Collaboration ouverte</span>
+                </div>
+              </div>
+            </div>
+            <div className="about-image">
+              <img 
+                src="/img/logo.png" 
+                alt="Gentil Le NoiR"
+                className="about-img"
+              />
+              <div className="about-image-decoration"></div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="cv-section">
-        <a href="/cv" target="_blank" rel="noopener noreferrer">
-          📄 Lire le CV
-        </a>
-        <a href="/doc/gentil_le_noir_c_v.pdf" download>
-          ⬇️ Télécharger le CV
-        </a>
+      {/* Azenium Spotlight Section */}
+      <section id="azenium" className="azenium-section" ref={addToRefs}>
+        <div className="container">
+          <div className="azenium-content">
+            <div className="azenium-logos">
+              <img src="/img/azenium/logo-normal.png" alt="Azenium" className="azenium-logo-normal" />
+              <img src="/img/azenium/logo-long.png" alt="Azenium" className="azenium-logo-long" />
+            </div>
+            <h3 className="azenium-title">Plateforme de Partenariat & Assistance Financière</h3>
+            <p className="azenium-description">
+              Azenium est actuellement en recherche active de partenaires et d'assistance financière 
+              pour développer sa plateforme innovante dédiée à l'inclusion financière en Afrique.
+            </p>
+            <div className="azenium-badges">
+              <span className="azenium-badge">🚀 En recherche de partenariat</span>
+              <span className="azenium-badge">💼 Assistance financière</span>
+            </div>
+            <a 
+              href="https://partner-azenium.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-large"
+            >
+              Devenir partenaire
+              <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </section>
 
-      <section className="bio-sect">
-        <h2>📖 Biographie Brève</h2>
-        <p>
-          <strong>Gentil Le NoiR M.B.</strong> est un jeune développeur web passionné, electronicien expérimenté, informaticien polyvalent et programmeur créatif. <br />
-          Né en 2007 au Sud-Kivu en <em>République Démocratique du Congo</em>, il est de nationalité congolaise.<br />
-          Il travaille activement sur des projets numériques et électroniques à haute valeur ajoutée.
-        </p>
-        <p>
-          Grâce à sa passion, son sérieux et son envie constante d'apprendre, il a déjà réalisé plusieurs projets ambitieux dans les domaines du web et de l'électronique. Il a aujourd'hui <mark>{gentilAge} ans</mark>, avec un avenir prometteur.
-        </p>
-        <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-          <a href="/biography" style={{ 
-            color: '#38bdf8', 
-            textDecoration: 'none',
-            fontWeight: '600',
-            padding: '0.5rem 1rem',
-            border: '1px solid rgba(56, 189, 248, 0.3)',
-            borderRadius: '6px',
-            background: 'rgba(56, 189, 248, 0.1)'
-          }}>
-            📚 Voir plus...
-          </a>
-        </p>
+      {/* Services Section */}
+      <section id="services" className="services-section" ref={addToRefs}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-subtitle">Ce que je fais</span>
+            <h2 className="section-title">Mes Services</h2>
+          </div>
+          <div className="services-grid">
+            <div className="service-card">
+              <div className="service-icon">💻</div>
+              <h3>Création de Sites Web</h3>
+              <p>Sites vitrines, e-commerce, applications web sur mesure avec React, Node.js et technologies modernes.</p>
+              <a href="/portfolio" className="service-link">Voir réalisations →</a>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">🔧</div>
+              <h3>Correction & Optimisation</h3>
+              <p>Audit, optimisation de performance, correction de bugs et modernisation de sites existants.</p>
+              <a href="/portfolio" className="service-link">Découvrir →</a>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">🤝</div>
+              <h3>Travail en Équipe</h3>
+              <p>Intégration dans vos équipes existantes pour renforcer vos capacités de développement.</p>
+              <a href="/contacts" className="service-link">Me rejoindre →</a>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">🔌</div>
+              <h3>Projets Électroniques</h3>
+              <p>Développement de solutions IoT, projets Arduino, et intégration matériel-logiciel.</p>
+              <a href="/portfolio" className="service-link">Voir projets →</a>
+            </div>
+          </div>
+        </div>
       </section>
-    </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="skills-section" ref={addToRefs}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-subtitle">Mon expertise</span>
+            <h2 className="section-title">Compétences Techniques</h2>
+          </div>
+          <div className="skills-grid">
+            <div className="skill-category">
+              <h3>Frontend</h3>
+              <div className="skill-items">
+                <div className="skill-item">
+                  <span>React / TypeScript</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '90%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>HTML5 / CSS3 / Tailwind</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '95%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>JavaScript ES6+</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '92%'}}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="skill-category">
+              <h3>Backend</h3>
+              <div className="skill-items">
+                <div className="skill-item">
+                  <span>Node.js / Express</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '85%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>PHP / Laravel</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '80%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>MySQL / MongoDB</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '85%'}}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="skill-category">
+              <h3>Électronique</h3>
+              <div className="skill-items">
+                <div className="skill-item">
+                  <span>Arduino / Microcontrôleurs</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '88%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>Circuit Design</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '82%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>IoT / Capteurs</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '85%'}}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="skill-category">
+              <h3>Outils & Soft Skills</h3>
+              <div className="skill-items">
+                <div className="skill-item">
+                  <span>Git / GitHub</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '90%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>Communication</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '95%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>Problem Solving</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '92%'}}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contact" className="contact-section" ref={addToRefs}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-subtitle">Restons en contact</span>
+            <h2 className="section-title">Travaillons Ensemble</h2>
+          </div>
+          <div className="contact-grid">
+            <div className="contact-info">
+              <h3>Informations de Contact</h3>
+              <div className="contact-details">
+                <div className="contact-detail-item">
+                  <img src="/img/whatsapp.png" alt="WhatsApp" className="contact-icon" />
+                  <div>
+                    <h4>WhatsApp</h4>
+                    <p>+243978089552</p>
+                  </div>
+                </div>
+                <div className="contact-detail-item">
+                  <img src="/img/gmail.png" alt="Email" className="contact-icon" />
+                  <div>
+                    <h4>Email</h4>
+                    <p>gentillenoir075@outlook.com</p>
+                  </div>
+                </div>
+              </div>
+              <div className="contact-social">
+                <a href="#" className="social-link">LinkedIn</a>
+                <a href="#" className="social-link">GitHub</a>
+                <a href="#" className="social-link">Twitter</a>
+              </div>
+            </div>
+            <div className="contact-form-wrapper">
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
 
