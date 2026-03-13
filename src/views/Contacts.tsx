@@ -20,7 +20,7 @@ const Contacts = () => {
     { 
       type: 'LinkedIn', 
       value: 'Gentil Le NoiR', 
-      link: 'https://www.linkedin.com/in/gentil-le-noir-mali-ya-mungu-651751289',
+      link: 'https://www.linkedin.com/in/gentil-lenoir-maliuamungu',
       icon: '◇'
     },
     { 
