@@ -366,7 +366,7 @@ const Home = () => {
               <div className="contact-social">
                 <a href="https://www.linkedin.com/in/gentil-le-noir-mali-ya-mungu-651751289" className="social-link">LinkedIn</a>
                 <a href="https://github.com/gentil-lenoir" className="social-link">GitHub</a>
-                <a href="#" className="social-link">Facebook</a>
+                <a href="https://web.facebook.com/profile.php?id=61576314604030" className="social-link">Facebook</a>
               </div>
             </div>
             <div className="contact-form-wrapper contact-form-container" style={{
