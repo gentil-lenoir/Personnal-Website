@@ -257,7 +257,7 @@ const Bio = () => {
               Je suis à votre écoute pour en discuter.
             </p>
           </div>
-          <div style={{
+          <div className="contact-form-container" style={{
             background: 'rgba(255, 255, 255, 0.03)',
             padding: '2rem',
             borderRadius: '1rem',
