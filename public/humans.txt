@@ -2,7 +2,7 @@
 Developer: Gentil Le NoiR MALIYAMUNGU
 Site: https://gentillenoir.vercel.app
 Location: Goma, RDC
-Twitter: @TonPseudoTwitter
+Twitter: @azenium.platform
 Skills: React, Laravel, PHP, Electron, HTML, CSS, JS, SQL
 
 /* THANKS */
