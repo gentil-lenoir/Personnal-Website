@@ -1,136 +1,104 @@
 import React, { useState } from 'react';
 import '../css/components/ContactForm.css';
 
-const ContactForm: React.FC = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
-  const [message, setMessage] = useState('');
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setShowMessage(false);
-
-    // Récupération des données du formulaire
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      message: formData.get('message') as string,
-    };
-
-    console.log('📨 Données du formulaire (simulation):', data);
-
-    // Simulation d'attente (2 secondes)
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    // TOUJOURS en erreur (comme demandé)
-    const errorMessages = [
-      "🚫 Service temporairement indisponible - Mode simulation",
-      "🔌 Erreur de connexion au serveur - Simulation en cours",
-      "⏱️ Timeout de la requête - Ceci est une démo",
-      "🛠️ Maintenance technique - Formulaire en mode test"
-    ];
     
-    const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+    // Construction du mailto avec les données du formulaire
+    const subject = encodeURIComponent(formData.subject || 'Nouveau message depuis votre portfolio');
+    const body = encodeURIComponent(
+      `Nom: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
     
-    setMessage(randomError + '\n\nEn production, votre message serait envoyé à: gentillenoir075@outlook.com');
-    setShowMessage(true);
+    // Ouverture du client email par défaut
+    window.location.href = `mailto:gentillenoir075@outlook.com?subject=${subject}&body=${body}`;
     
-    // Réinitialiser le formulaire
-    form.reset();
-    setIsSubmitting(false);
+    // Optionnel: Afficher un message de succès
+    alert('Votre message a été préparé ! Veuillez l\'envoyer depuis votre client email.');
   };
 
   return (
-    <div className="contact-form-wrapper">
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <div className="form-header">
-          <h2 className="form-title">Contactez-moi</h2>
-          <p className="form-subtitle">
-            En mode simulation - Tous les envois échouent volontairement
-          </p>
-        </div>
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="name">Nom complet</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          placeholder="Jean Dupont"
+        />
+      </div>
 
-        <div className="input-group">
-          <label htmlFor="name">
-            <span className="icon">👤</span>
-            Nom complet
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Votre nom"
-            required
-            disabled={isSubmitting}
-          />
-        </div>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          placeholder="jean.dupont@email.com"
+        />
+      </div>
 
-        <div className="input-group">
-          <label htmlFor="email">
-            <span className="icon">📧</span>
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="votre@email.com"
-            required
-            disabled={isSubmitting}
-          />
-        </div>
+      <div className="form-group">
+        <label htmlFor="subject">Sujet</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          placeholder="Collaboration, projet, question..."
+        />
+      </div>
 
-        <div className="input-group">
-          <label htmlFor="message">
-            <span className="icon">💬</span>
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Votre message..."
-            rows={5}
-            required
-            disabled={isSubmitting}
-          />
-        </div>
+      <div className="form-group">
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+          rows={6}
+          placeholder="Décrivez votre projet ou votre demande..."
+        />
+      </div>
 
-        <button 
-          type="submit" 
-          className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <>
-              <span className="spinner"></span>
-              Simulation en cours...
-            </>
-          ) : (
-            '📤 Eenvoi'
-          )}
-        </button>
+      <button type="submit" className="form-submit">
+        <span>Envoyer le message</span>
+        <svg className="submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
 
-      </form>
-
-      {showMessage && (
-        <div className="error-message">
-          <div className="error-icon">❌</div>
-          <div className="error-content">
-            <h3>Échec simulé</h3>
-            <p>{message}</p>
-            <button 
-              className="close-btn"
-              onClick={() => setShowMessage(false)}
-            >
-              Fermer
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+      <p className="form-note">
+        ℹ️ En cliquant sur "Envoyer", votre client email s'ouvrira avec le message pré-rempli.
+        Il ne vous restera plus qu'à l'envoyer depuis votre boîte mail.
+      </p>
+    </form>
   );
 };
 
