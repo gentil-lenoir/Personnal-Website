@@ -60,7 +60,7 @@ const Bio = () => {
           {/* Quick Actions */}
           <div className="bio-actions">
             <a href="/images" className="bio-action-card">
-              <span className="action-icon">📸</span>
+              <span className="action-icon">📷</span>
               <div className="action-text">
                 <h3>Galerie d'images</h3>
                 <p>Découvrez mes moments marquants</p>
@@ -68,7 +68,7 @@ const Bio = () => {
               <span className="action-arrow">→</span>
             </a>
             <a href="/cv" target="_blank" rel="noopener noreferrer" className="bio-action-card">
-              <span className="action-icon">📄</span>
+              <span className="action-icon">📋</span>
               <div className="action-text">
                 <h3>Lire le CV</h3>
                 <p>Parcourez mon parcours professionnel</p>
@@ -76,7 +76,7 @@ const Bio = () => {
               <span className="action-arrow">→</span>
             </a>
             <a href="/doc/gentil_le_noir_c_v.pdf" download className="bio-action-card">
-              <span className="action-icon">⬇️</span>
+              <span className="action-icon">▼</span>
               <div className="action-text">
                 <h3>Télécharger le CV</h3>
                 <p>Version PDF à conserver</p>
@@ -150,22 +150,22 @@ const Bio = () => {
               <h3>Domaines d'expertise</h3>
               <div className="expertise-grid">
                 <div className="expertise-item">
-                  <span className="expertise-icon">💻</span>
+                  <span className="expertise-icon">⌨</span>
                   <h4>Développement Web</h4>
                   <p>React, Node.js, TypeScript, Laravel</p>
                 </div>
                 <div className="expertise-item">
-                  <span className="expertise-icon">🔌</span>
+                  <span className="expertise-icon">⚡</span>
                   <h4>Électronique</h4>
                   <p>Arduino, Raspberry Pi, IoT, Capteurs</p>
                 </div>
                 <div className="expertise-item">
-                  <span className="expertise-icon">📱</span>
+                  <span className="expertise-icon">📞</span>
                   <h4>Programmation</h4>
                   <p>Applications web, mobiles, embarquées</p>
                 </div>
                 <div className="expertise-item">
-                  <span className="expertise-icon">🤝</span>
+                  <span className="expertise-icon">◇</span>
                   <h4>Gestion de projet</h4>
                   <p>Leadership, collaboration, méthodologies agiles</p>
                 </div>
@@ -213,22 +213,22 @@ const Bio = () => {
               <h3>Mes Valeurs</h3>
               <div className="values-grid">
                 <div className="value-item">
-                  <span className="value-icon">🤝</span>
+                  <span className="value-icon">◇</span>
                   <h4>Collaboration</h4>
                   <p>Travailler ensemble pour de meilleurs résultats</p>
                 </div>
                 <div className="value-item">
-                  <span className="value-icon">⚡</span>
+                  <span className="value-icon">⚙</span>
                   <h4>Intégrité</h4>
                   <p>Transparence et honnêteté dans chaque projet</p>
                 </div>
                 <div className="value-item">
-                  <span className="value-icon">💪</span>
+                  <span className="value-icon">██</span>
                   <h4>Persévérance</h4>
                   <p>Ne jamais abandonner face aux défis</p>
                 </div>
                 <div className="value-item">
-                  <span className="value-icon">📚</span>
+                  <span className="value-icon">📖</span>
                   <h4>Partage</h4>
                   <p>Transmettre les connaissances à la communauté</p>
                 </div>

@@ -3,11 +3,11 @@ import '../css/views/Images.css';
 
 // Catégories d'images
 const categories = [
-  { id: 'all', name: 'Toutes les photos', icon: '📸' },
-  { id: 'portraits', name: 'Portraits', icon: '👤' },
-  { id: 'projects', name: 'Projets', icon: '💻' },
-  { id: 'events', name: 'Événements', icon: '🎉' },
-  { id: 'azenium', name: 'Azenium', icon: '🚀' }
+{ id: 'all', name: 'Toutes les photos', icon: '📷' },
+{ id: 'portraits', name: 'Portraits', icon: '◉' },
+{ id: 'projects', name: 'Projets', icon: '⌨' },
+{ id: 'events', name: 'Événements', icon: '◆' },
+{ id: 'azenium', name: 'Azenium', icon: '▲' }
 ];
 
 // Données des images avec métadonnées
@@ -178,12 +178,12 @@ const Images = () => {
                         />
                         {image.featured && (
                           <div className="image-featured-badge">
-                            <span>⭐ En vedette</span>
+                            <span>◆ En vedette</span>
                           </div>
                         )}
                         <div className="image-overlay">
                           <div className="overlay-content">
-                            <span className="overlay-icon">🔍</span>
+                            <span className="overlay-icon">🔎</span>
                             <span>Agrandir</span>
                           </div>
                         </div>

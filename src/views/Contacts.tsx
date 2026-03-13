@@ -8,38 +8,38 @@ const Contacts = () => {
       type: 'Email', 
       value: 'gentillenoir075@outlook.com', 
       link: 'mailto:gentillenoir075@outlook.com',
-      icon: '📧',
+      icon: '✉',
       primary: true
     },
     { 
       type: 'WhatsApp', 
       value: '+243 978 089 552', 
       link: 'https://wa.me/243978089552',
-      icon: '💬'
+      icon: '💭'
     },
     { 
       type: 'LinkedIn', 
       value: 'Gentil Le NoiR', 
       link: 'https://www.linkedin.com/in/gentil-le-noir-mali-ya-mungu-651751289',
-      icon: '🔗'
+      icon: '◇'
     },
     { 
       type: 'GitHub', 
       value: '@gentil-lenoir', 
       link: 'https://github.com/gentil-lenoir',
-      icon: '🐙'
+      icon: '◈'
     },
     { 
       type: 'Telegram', 
       value: '@lenoirgentil', 
       link: 'https://t.me/lenoirgentil',
-      icon: '✈️'
+      icon: '▶'
     },
     { 
       type: 'Phone', 
       value: '+250 729 606 087',
       link: 'tel:+250729606087',
-      icon: '📞'
+      icon: '☎'
     }
   ];
 
