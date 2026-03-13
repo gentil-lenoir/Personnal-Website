@@ -245,7 +245,7 @@ const Home = () => {
               <h3>▲ Frontend</h3>
               <div className="skill-items">
                 <div className="skill-item">
-                  <span>React / TypeScript</span>
+                  <span>React / TypeScript / VueJs</span>
                   <div className="skill-bar">
                     <div className="skill-progress" style={{width: '90%'}}></div>
                   </div>
@@ -257,7 +257,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="skill-item">
-                  <span>JavaScript ES6+</span>
+                  <span>JavaScript</span>
                   <div className="skill-bar">
                     <div className="skill-progress" style={{width: '92%'}}></div>
                   </div>
@@ -268,21 +268,44 @@ const Home = () => {
               <h3>◆ Backend</h3>
               <div className="skill-items">
                 <div className="skill-item">
-                  <span>Node.js / Express</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '85%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
                   <span>PHP / Laravel</span>
                   <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '80%'}}></div>
+                    <div className="skill-progress" style={{width: '90%'}}></div>
                   </div>
                 </div>
                 <div className="skill-item">
                   <span>MySQL / MongoDB</span>
                   <div className="skill-bar">
                     <div className="skill-progress" style={{width: '85%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>Node.js / Express</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '25%'}}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="skill-category">
+              <h3>⚙ Outils & Soft Skills</h3>
+              <div className="skill-items">
+                <div className="skill-item">
+                  <span>Git / GitHub</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '97%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>Communication & Support</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '90%'}}></div>
+                  </div>
+                </div>
+                <div className="skill-item">
+                  <span>Problem Solving</span>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{width: '72%'}}></div>
                   </div>
                 </div>
               </div>
@@ -299,36 +322,13 @@ const Home = () => {
                 <div className="skill-item">
                   <span>Circuit Design</span>
                   <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '82%'}}></div>
+                    <div className="skill-progress" style={{width: '52%'}}></div>
                   </div>
                 </div>
                 <div className="skill-item">
                   <span>IoT / Capteurs</span>
                   <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '85%'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h3>⚙ Outils & Soft Skills</h3>
-              <div className="skill-items">
-                <div className="skill-item">
-                  <span>Git / GitHub</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '90%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>Communication</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '95%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>Problem Solving</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '92%'}}></div>
+                    <div className="skill-progress" style={{width: '55%'}}></div>
                   </div>
                 </div>
               </div>
