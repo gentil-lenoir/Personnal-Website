@@ -1,0 +1,221 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://gentil-lenoir.vercel.app/#person",
+      "gender": "male",
+      "url": "https://gentil-lenoir.vercel.app",
+      "name": "GENTIL LE NOIR MALIYAMUNGU BALEGAMIRE",
+      "alternateName": "Gentil Le NoiR",
+      "givenName": "Gentil Le NoiR",
+      "familyName": "MALIYAMUNGU",
+      "url": "https://gentil-lenoir.vercel.app",
+      "sameAs": [
+        "https://github.com/gentil-lenoir",
+        "https://www.linkedin.com/in/gentil-lenoir-maliyamungu",
+        "https://twitter.com/azeniumplatform",
+        "https://web.facebook.com/profile.php?id=61576314604030",
+        "https://instagram.com/@gentil.lenoir",
+        "https://stackoverflow.com/users/32491275/gentil-le-noir",
+      ],
+      "image": [
+        "https://gentil-lenoir.vercel.app/img/gentil-sur-pc.jpg",
+        "https://gentil-lenoir.vercel.app/favicon.ico",
+        "https://gentil-lenoir.vercel.app/logo192.png",
+        "https://gentil-lenoir.vercel.app/logo512.png",
+        "https://gentil-lenoir.vercel.app/img/qr_gentil.png",
+      ],
+      "description": "Ingénieur logiciel et développeur full-stack basé à Goma, RDC. Expert React, Laravel, JavaScript, PHP. 5+ ans d'expérience.",
+      "birthPlace": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Goma",
+          "addressRegion": "Nord-Kivu",
+          "addressCountry": "RDC"
+        }
+      },
+      "nationality": {
+        "@type": "Country",
+        "name": "République Démocratique du Congo"
+      },
+      "jobTitle": ["Ingénieur Logiciel", "Développeur Full-Stack", "Consultant Technique"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance & Consultant",
+        "url": "https://gentil-lenoir.vercel.app"
+      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Lay Adventist of Kigali",
+          "sameAs": "https://www.unilak.ac.rw"
+        },
+        {
+          "@type": "WorkingGroup",
+          "name": "Azenium Platform",
+          "sameAs": "https://www.azenium.com"
+        }],
+      "knowsAbout": [
+        "React.js", "Laravel", "JavaScript", "TypeScript", "PHP", "Node.js",
+        "HTML5", "CSS3", "Tailwind CSS", "Material-UI", "MySQL", "MongoDB",
+        "REST API", "GraphQL", "Git", "Docker", "UI/UX Design", "SEO",
+        "Performance Web", "Progressive Web Apps", "Electron.js"
+      ],
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "Français",
+          "alternateName": "fr",
+          "level": "Langue maternelle"
+        },
+        {
+          "@type": "Language",
+          "name": "Anglais",
+          "alternateName": "en",
+          "level": "Courant (C1)"
+        },
+        {
+          "@type": "Language",
+          "name": "Swahili",
+          "alternateName": "sw",
+          "level": "Langue maternelle"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Goma",
+        "addressRegion": "Nord-Kivu",
+        "addressCountry": "CD",
+        "postalCode": "00000"
+      },
+      "email": "gentillenoir@outlook.com",
+      "telephone": "+243978089552",
+      "url": "https://gentil-lenoir.vercel.app/contacts",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gentil-lenoir.vercel.app/logo192.png",
+        "width": 192,
+        "height": 192
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+243978089552",
+        "email": "gentillenoir@outlook.com",
+        "availableLanguage": ["Français", "English", "Swahili"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gentil-lenoir.vercel.app/#website",
+      "url": "https://gentil-lenoir.vercel.app",
+      "name": "Gentil Le NoiR - Portfolio Officiel",
+      "description": "Portfolio professionnel de Gentil Le NoiR MALIYAMUNGU, ingénieur logiciel et développeur full-stack basé à Goma, RDC.",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@id": "https://gentil-lenoir.vercel.app/#person"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gentil-lenoir.vercel.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://gentil-lenoir.vercel.app/#profilepage",
+      "url": "https://gentil-lenoir.vercel.app/bio",
+      "name": "Biographie de Gentil Le NoiR",
+      "description": "Parcours professionnel, compétences et réalisations de Gentil Le NoiR MALIYAMUNGU",
+      "mainEntity": {
+        "@id": "https://gentil-lenoir.vercel.app/#person"
+      },
+      "dateCreated": "2023-01-15",
+      "dateModified": "2025-07-24"
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://gentil-lenoir.vercel.app/#portfolio",
+      "url": "https://gentil-lenoir.vercel.app/portfolio",
+      "name": "Portfolio - Projets de Gentil Le NoiR",
+      "description": "Découvrez les réalisations et projets web de Gentil Le NoiR",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "CreativeWork",
+            "position": 1,
+            "name": "Azenium Platform",
+            "description": "Plateforme de création des invitations/tickets virtuels pour événements, permet les réservations, paiements et gestion d'événements en ligne pour des hôtels, restaurants et organisateurs d'événements. (https://azenium.com)",
+            "url": "https://azenium.com",
+            "image": "https://gentil-lenoir.vercel.app/images/project-azenium.jpg",
+            "keywords": ["Azenium", "Azenium Platform", "Laravel", "Events", "Reservations", "Paiements", "Invitations virtuels", "tickets virtuels", "virtuels"]
+          },
+          {
+            "@type": "CreativeWork",
+            "position": 2,
+            "name": "Gentil Le NoiR Portfolio",
+            "description": "Mon portfolio professionnel personnel, développé avec React.js et Tailwind CSS, hébergé sur Vercel. Présente mes compétences, projets et expériences en développement web. (https://gentil-lenoir.vercel.app)",
+            "url": "https://gentil-lenoir.vercel.app",
+            "image": "https://gentil-lenoir.vercel.app/img/azenium/general-logo.jpeg",
+            "keywords": ["Portfolio", "React.js", "Tailwind CSS", "Vercel", "Développement web", "Projets personnels"]
+          }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://gentil-lenoir.vercel.app/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://gentil-lenoir.vercel.app"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Biographie",
+          "item": "https://gentil-lenoir.vercel.app/bio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Portfolio",
+          "item": "https://gentil-lenoir.vercel.app/portfolio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "https://gentil-lenoir.vercel.app/contacts"
+        }
+      ]
+    },
+    {
+      "@type": "ImageGallery",
+      "@id": "https://gentil-lenoir.vercel.app/#gallery",
+      "url": "https://gentil-lenoir.vercel.app/images",
+      "name": "Galerie photos de Gentil Le NoiR",
+      "description": "Photos professionnelles de Gentil Le NoiR en action",
+      "image": [
+        {
+          "@type": "ImageObject",
+          "url": "https://gentil-lenoir.vercel.app/logo192.png",
+          "caption": "Gentil Le NoiR en costume",
+          "thumbnail": "https://gentil-lenoir.vercel.app/logo192.png"
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://gentil-lenoir.vercel.app/img/gentil-sur-pc.jpg",
+          "caption": "Gentil Le NoiR en train de coder",
+          "thumbnail": "https://gentil-lenoir.vercel.app/img/gentil-sur-pc.jpg"
+        }
+      ]
+    }
+  ]
+}
+</script>

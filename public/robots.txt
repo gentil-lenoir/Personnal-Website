@@ -1,6 +1,37 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow: api/
-Allow: *
+# robots.txt pour Gentil Le NoiR Portfolio
+# Dernière mise à jour: 2025-07-24
 
+User-agent: *
+Allow: /
+
+# Autoriser les bots à indexer les images
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Twitterbot
+Allow: /
+Allow: /images/
+
+User-agent: FacebookExternalHit
+Allow: /
+Allow: /images/
+
+User-agent: LinkedInBot
+Allow: /
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+# Sitemaps
 Sitemap: https://gentil-lenoir.vercel.app/sitemap.xml
+
+# Crawl-delay (respectueux)
+Crawl-delay: 1
+
+Host: https://gentil-lenoir.vercel.app

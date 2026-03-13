@@ -1,9 +1,39 @@
 /* TEAM */
 Developer: Gentil Le NoiR MALIYAMUNGU
-Site: https://gentillenoir.vercel.app
-Location: Goma, RDC
-Twitter: @azenium.platform
-Skills: React, Laravel, PHP, Electron, HTML, CSS, JS, SQL
+Role: Ingénieur Logiciel & Développeur Full-Stack
+Website: https://gentil-lenoir.vercel.app
+Email: gentil.maliyamungu@example.com
+Location: Goma, Nord-Kivu, République Démocratique du Congo
+Timezone: Africa/Lubumbashi (GMT+2)
+GitHub: @gentil-lenoir
+LinkedIn: /in/gentil-lenoir-maliyamungu
+Twitter: @azeniumplatform
+Instagram: @gentil.lenoir
+
+/* SKILLS */
+Frontend: React.js, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind, Material-UI
+Backend: Laravel, PHP, Node.js, Express, Python, REST APIs, GraphQL
+Database: MySQL, PostgreSQL, MongoDB, Firebase
+Mobile: React Native, Electron
+DevOps: Git, Docker, Vercel, Netlify, CI/CD
+Design: Figma, Adobe XD, UI/UX Principles
+
+/* PROJECTS */
+- Azenium Platform (Plateforme éducative) - React/Laravel
+- Goma Digital (Site vitrine) - React/Node
+- Congo Business Directory (Annuaire) - Laravel/MySQL
+- Portfolio personnel (Site vitrine) - React
+- +15 autres projets clients
 
 /* THANKS */
-Technology: React, Laravel, Vite, PHP, Electron.js, Electronic HTML CSS JavaScript
+Technology: React, Laravel, Vite, Node.js, PHP, MySQL
+Tools: VS Code, Git, Figma, Postman
+Hosting: Vercel, Netlify
+
+/* CREDITS */
+Design original par Gentil Le NoiR
+Icons by FontAwesome & Heroicons
+Fonts by Google Fonts
+
+/* LAST UPDATE */
+2025-07-24

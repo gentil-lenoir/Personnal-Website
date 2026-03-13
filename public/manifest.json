@@ -1,25 +1,64 @@
 {
   "short_name": "Gentil Le NoiR",
-  "name": "Gentil Le NoiR Maliyamungu B.",
+  "name": "Gentil Le NoiR Maliyamungu Balegamire - Ingénieur Logiciel & Développeur Full-Stack",
+  "description": "Portfolio professionnel de Gentil Le NoiR MALIYAMUNGU. Expert React, Laravel, JavaScript. Basé à Goma, RDC. 5+ ans d'expérience, 20+ projets réalisés.",
   "icons": [
+
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/favicon.ico",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo192.png",
+      "src": "/img/photos/gentil1.jpg",
+      "sizes": "192x192",
       "type": "image/png",
-      "sizes": "192x192"
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "/img/gentil-sur-pc.jpg",
+      "sizes": "384x384",
       "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo192.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#0a1929",
+  "background_color": "#0a1929",
+  "scope": "/",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "categories": ["portfolio", "development", "technology", "freelance"],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "short_name": "Projets",
+      "description": "Voir mes réalisations",
+      "url": "/portfolio",
+      "icons": [{ "src": "/img/gentil-sur-pc.jpg", "sizes": "96x96" }]
+    },
+    {
+      "name": "CV",
+      "short_name": "CV",
+      "description": "Télécharger mon CV",
+      "url": "/cv",
+      "icons": [{ "src": "/logo192.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Me contacter",
+      "url": "/contacts",
+      "icons": [{ "src": "/logo192.png", "sizes": "96x96" }]
+    }
+  ]
 }
