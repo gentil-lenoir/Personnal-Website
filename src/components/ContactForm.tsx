@@ -87,14 +87,14 @@ const ContactForm = () => {
         />
       </div>
 
-      <button type="submit" className="form-submit">
+      <button type="submit" className="form-submit btn btn-primary" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem' }}>
         <span>Envoyer le message</span>
-        <svg className="submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg className="submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ width: '1.2em', height: '1.2em' }}>
           <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </button>
 
-      <p className="form-note-footer" style={{ marginTop: '1rem', fontSize: '0.9rem', opacity: 0.8, color: 'inherit' }}>
+      <p className="form-note-footer" style={{ marginTop: '1rem', fontSize: '0.85rem', opacity: 0.7, textAlign: 'center', color: 'rgba(255, 255, 255, 0.7)' }}>
         ℹ️ En cliquant sur "Envoyer", votre client email s'ouvrira avec le message pré-rempli.
         Il ne vous restera plus qu'à l'envoyer depuis votre boîte mail.
       </p>
