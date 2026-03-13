@@ -364,12 +364,17 @@ const Home = () => {
                 </div>
               </div>
               <div className="contact-social">
-                <a href="https://www.linkedin.com/in/gentil-le-noir-mali-ya-mungu-651751289" className="social-link">in LinkedIn</a>
-                <a href="https://github.com/gentil-lenoir" className="social-link">⌨ GitHub</a>
-                <a href="#" className="social-link">f Facebook</a>
+                <a href="https://www.linkedin.com/in/gentil-le-noir-mali-ya-mungu-651751289" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
+                <a href="https://github.com/gentil-lenoir" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
+                <a href="https://web.facebook.com/profile.php?id=61576314604030" target="_blank" rel="noopener noreferrer" className="social-link">Facebook</a>
               </div>
             </div>
-            <div className="contact-form-wrapper">
+            <div className="contact-form-wrapper" style={{
+              background: 'rgba(255, 255, 255, 0.03)',
+              padding: '2rem',
+              borderRadius: '1rem',
+              border: '1px solid rgba(255, 255, 255, 0.05)'
+            }}>
               <ContactForm />
             </div>
           </div>

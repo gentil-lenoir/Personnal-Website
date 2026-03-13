@@ -17,8 +17,8 @@ const Bio = () => {
       { threshold: 0.1, rootMargin: '0px' }
     );
 
-    const paragraphs = document.querySelectorAll('.bio-paragraph');
-    paragraphs.forEach((p) => observer.observe(p));
+    const elements = document.querySelectorAll('.bio-paragraph, .bio-quote, .timeline-item, .bio-conclusion');
+    elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -123,7 +123,7 @@ const Bio = () => {
                 <div className="timeline-item" data-aos="fade-up">
                   <span className="timeline-year">Secondaire</span>
                   <h4>Institut Maranatha</h4>
-                  <p>Diplôme en électronique industrielle</p>
+                  <p>Education de base</p>
                 </div>
                 <div className="timeline-item" data-aos="fade-left">
                   <span className="timeline-year">Supérieur</span>
@@ -257,7 +257,15 @@ const Bio = () => {
               Je suis à votre écoute pour en discuter.
             </p>
           </div>
-          <ContactForm />
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.03)',
+            padding: '2rem',
+            borderRadius: '1rem',
+            border: '1px solid rgba(255, 255, 255, 0.05)',
+            marginTop: '2rem'
+          }}>
+            <ContactForm />
+          </div>
         </div>
       </section>
     </main>

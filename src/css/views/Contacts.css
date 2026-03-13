@@ -322,7 +322,7 @@
   transform: translateX(5px) rotate(-15deg);
 }
 
-.form-note {
+.form-note-footer {
   text-align: center;
   color: var(--text-tertiary);
   font-size: 0.9rem;

@@ -94,7 +94,7 @@ const ContactForm = () => {
         </svg>
       </button>
 
-      <p className="form-note">
+      <p className="form-note-footer" style={{ marginTop: '1rem', fontSize: '0.9rem', opacity: 0.8 }}>
         ℹ️ En cliquant sur "Envoyer", votre client email s'ouvrira avec le message pré-rempli.
         Il ne vous restera plus qu'à l'envoyer depuis votre boîte mail.
       </p>
