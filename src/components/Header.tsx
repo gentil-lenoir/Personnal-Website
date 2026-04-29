@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../css/components/Header.css';
 
@@ -9,18 +9,22 @@ const Header = () => {
   const menuRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
-  // Fermer le menu au clic extérieur
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node) && 
-          headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+  // Fermer le menu au clic/touch extérieur (mobile support)
+  const handleClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node) && 
+        headerRef.current && !headerRef.current.contains(event.target as Node)) {
+      setMenuOpen(false);
+    }
   }, []);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [handleClickOutside]);
 
   // Fermer le menu quand la route change
   useEffect(() => {
@@ -41,7 +45,46 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Close on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [menuOpen]);
+
+  // Close on resize/orientation change
+  useEffect(() => {
+    const handleResize = () => {
+      setMenuOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);;
+
   const isActive = (path: string) => location.pathname === path;
+
+  // Body class toggle for padding/no-scroll
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add('menu-open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
 
   return (
     <>
