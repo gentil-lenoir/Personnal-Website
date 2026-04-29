@@ -176,6 +176,12 @@ section.section-visible {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
+.btn svg,
+.service-link svg,
+.social-pill svg {
+  font-size: 1rem;
+}
+
 .btn:hover {
   transform: translateY(-2px);
 }
@@ -351,6 +357,7 @@ section.section-visible {
   background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
   transition: transform 0.25s ease, background 0.25s ease;
+  font-size: 1.05rem;
 }
 
 .social-card a:hover {

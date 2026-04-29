@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { FiArrowRight, FiExternalLink, FiLayers, FiMonitor, FiTrendingUp } from 'react-icons/fi';
 import '../css/views/Portfolio.css';
+
+const renderIcon = (Icon: any, className?: string) =>
+  React.createElement(Icon as any, className ? { className, 'aria-hidden': true } : { 'aria-hidden': true });
 
 const skillsData = [
   { category: "Frontend", skills: [
@@ -149,21 +153,21 @@ const Portfolio = () => {
             </p>
             <div className="azenium-features">
               <div className="azenium-feature">
-                <span className="feature-icon">⌁</span>
+                <span className="feature-icon">{renderIcon(FiLayers)}</span>
                 <div>
                   <h4>Vision produit claire</h4>
                   <p>Une plateforme pensée pour bâtir plusieurs produits numériques forts</p>
                 </div>
               </div>
               <div className="azenium-feature">
-                <span className="feature-icon">⚙</span>
+                <span className="feature-icon">{renderIcon(FiMonitor)}</span>
                 <div>
                   <h4>SiteX Quevvy</h4>
                   <p>Le premier produit de Quevvy pour la création de sites modernes</p>
                 </div>
               </div>
               <div className="azenium-feature">
-                <span className="feature-icon">▲</span>
+                <span className="feature-icon">{renderIcon(FiTrendingUp)}</span>
                 <div>
                   <h4>Investissement & expansion</h4>
                   <p>Ouverture à des investisseurs pour accélérer la croissance</p>
@@ -179,9 +183,7 @@ const Portfolio = () => {
                 style={{wordWrap:'break-word',textOverflow:'unset', textWrap:'nowrap'}}
               >
                 Devenir partenaire
-                <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                {renderIcon(FiExternalLink, 'btn-icon')}
               </a>
             </div>
           </div>
@@ -285,9 +287,7 @@ const Portfolio = () => {
                   <div className="card-overlay">
                     <div className="overlay-content">
                       <a href={project.link} target="_blank" rel="noopener noreferrer" className="overlay-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        {renderIcon(FiExternalLink)}
                       </a>
                     </div>
                   </div>
@@ -303,9 +303,7 @@ const Portfolio = () => {
                   <div className="card-links">
                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="card-link">
                       Voir le projet
-                      <svg className="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                      {renderIcon(FiExternalLink, 'link-icon')}
                     </a>
                     {project.github && project.github !== '#' && (
                       <a href={project.github} target="_blank" rel="noopener noreferrer" className="card-link github">
@@ -336,6 +334,7 @@ const Portfolio = () => {
             </a>
             <a href="/cv" className="btn btn-outline btn-large">
               Voir mon CV
+              {renderIcon(FiArrowRight, 'link-icon')}
             </a>
           </div>
         </div>

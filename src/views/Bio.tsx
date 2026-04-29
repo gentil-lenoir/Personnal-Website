@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
+import { FiArrowRight, FiDownload, FiFileText, FiImage } from 'react-icons/fi';
 import '../css/views/Bio.css';
 import ContactForm from '../components/ContactForm';
+
+const renderIcon = (Icon: any, className?: string) =>
+  React.createElement(Icon as any, className ? { className, 'aria-hidden': true } : { 'aria-hidden': true });
 
 const storyParagraphs = [
   `Je suis Gentil Le NoiR Maliyamungu, développeur full stack, passionné de produit, d'ingénierie logicielle et de solutions numériques capables d'avoir un impact concret. Mon parcours s'est construit autour d'une idée simple: la technologie n'a de valeur que lorsqu'elle devient lisible, utile et suffisamment bien exécutée pour résoudre un vrai problème.`,
@@ -132,28 +136,28 @@ const Bio = () => {
         <div className="container">
           <div className="bio-actions reveal-on-scroll">
             <a href="/images" className="bio-action-card">
-              <span className="action-icon">IMG</span>
+              <span className="action-icon">{renderIcon(FiImage)}</span>
               <div className="action-text">
                 <h3>Galerie</h3>
                 <p>Explorer mes images et quelques moments de parcours.</p>
               </div>
-              <span className="action-arrow">-&gt;</span>
+              <span className="action-arrow">{renderIcon(FiArrowRight)}</span>
             </a>
-            <a href="/doc/cv.fr.pdf" target="_blank" rel="noreferrer" className="bio-action-card">
-              <span className="action-icon">CV FR</span>
+            <a href="/cv/fr" className="bio-action-card">
+              <span className="action-icon">{renderIcon(FiFileText)}</span>
               <div className="action-text">
                 <h3>CV français</h3>
                 <p>Consulter la version PDF en français.</p>
               </div>
-              <span className="action-arrow">-&gt;</span>
+              <span className="action-arrow">{renderIcon(FiArrowRight)}</span>
             </a>
-            <a href="/doc/cv.en.pdf" target="_blank" rel="noreferrer" className="bio-action-card">
-              <span className="action-icon">CV EN</span>
+            <a href="/cv/en" className="bio-action-card">
+              <span className="action-icon">{renderIcon(FiDownload)}</span>
               <div className="action-text">
                 <h3>Resume English</h3>
                 <p>Ouvrir la version anglaise de mon CV.</p>
               </div>
-              <span className="action-arrow">-&gt;</span>
+              <span className="action-arrow">{renderIcon(FiArrowRight)}</span>
             </a>
           </div>
 
@@ -225,7 +229,7 @@ const Bio = () => {
                   >
                     <span className="project-name">{project.name}</span>
                     <span className="project-desc">{project.desc}</span>
-                    <span className="project-link">-&gt;</span>
+                    <span className="project-link">{renderIcon(FiArrowRight)}</span>
                   </a>
                 ))}
               </div>

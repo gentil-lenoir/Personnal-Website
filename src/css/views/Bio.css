@@ -238,9 +238,7 @@
   border-radius: 18px;
   background: rgba(110, 168, 254, 0.12);
   color: var(--accent-cyan);
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
+  font-size: 1.1rem;
 }
 
 .action-text {
@@ -263,6 +261,11 @@
 .project-link {
   color: var(--text-muted);
   font-weight: 700;
+}
+
+.action-arrow svg,
+.project-link svg {
+  font-size: 1rem;
 }
 
 .bio-reading-shell {

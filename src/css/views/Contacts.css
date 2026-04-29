@@ -154,6 +154,12 @@
   transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+.hero-btn svg,
+.quick-arrow svg,
+.social-arrow svg {
+  font-size: 1rem;
+}
+
 .hero-btn:hover {
   transform: translateY(-2px);
 }
@@ -242,6 +248,7 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   flex-shrink: 0;
+  font-size: 1.2rem;
 }
 
 .priority-contact strong,
@@ -337,6 +344,9 @@
 }
 
 .quick-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   padding: 0.45rem 0.8rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -416,7 +426,9 @@
 
 .email-card-label,
 .social-name {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   margin-bottom: 0.3rem;
   color: var(--text-muted);
   font-size: 0.85rem;

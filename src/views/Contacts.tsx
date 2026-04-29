@@ -1,8 +1,21 @@
 import React from 'react';
+import {
+  FiArrowRight,
+  FiExternalLink,
+  FiGithub,
+  FiGlobe,
+  FiLinkedin,
+  FiMail,
+  FiMessageCircle,
+  FiPhone,
+  FiSend,
+  FiTwitter,
+} from 'react-icons/fi';
 import '../css/views/Contacts.css';
 import ContactForm from '../components/ContactForm';
 
 type PrimaryContact = {
+  icon: any;
   label: string;
   value: string;
   href: string;
@@ -11,6 +24,7 @@ type PrimaryContact = {
 };
 
 type SocialPlatform = {
+  icon: any;
   name: string;
   handle: string;
   href: string;
@@ -18,6 +32,7 @@ type SocialPlatform = {
 
 const primaryContacts: PrimaryContact[] = [
   {
+    icon: FiMessageCircle,
     label: 'WhatsApp',
     value: '+243 978 089 552',
     href: 'https://wa.me/243978089552',
@@ -25,6 +40,7 @@ const primaryContacts: PrimaryContact[] = [
     accent: 'signal-green',
   },
   {
+    icon: FiPhone,
     label: 'Téléphone',
     value: '+250 792 871 952',
     href: 'tel:+250792871952',
@@ -32,6 +48,7 @@ const primaryContacts: PrimaryContact[] = [
     accent: 'signal-blue',
   },
   {
+    icon: FiPhone,
     label: 'Téléphone',
     value: '+250 738 663 519',
     href: 'tel:+250738663519',
@@ -39,6 +56,7 @@ const primaryContacts: PrimaryContact[] = [
     accent: 'signal-cyan',
   },
   {
+    icon: FiSend,
     label: 'Telegram',
     value: '+250 738 663 519',
     href: 'https://t.me/+250738663519',
@@ -49,11 +67,13 @@ const primaryContacts: PrimaryContact[] = [
 
 const emails = [
   {
+    icon: FiMail,
     label: 'Email principal',
     value: 'gentillenoir075@outlook.com',
     href: 'mailto:gentillenoir075@outlook.com',
   },
   {
+    icon: FiMail,
     label: 'Email secondaire',
     value: 'gentillenoir075@gmail.com',
     href: 'mailto:gentillenoir075@gmail.com',
@@ -62,31 +82,39 @@ const emails = [
 
 const socials: SocialPlatform[] = [
   {
+    icon: FiGithub,
     name: 'GitHub',
     handle: '@gentil-lenoir',
     href: 'https://github.com/gentil-lenoir',
   },
   {
+    icon: FiLinkedin,
     name: 'LinkedIn',
     handle: 'Gentil Le NoiR Maliyamungu',
     href: 'https://www.linkedin.com/in/gentil-lenoir-maliyamungu',
   },
   {
+    icon: FiGlobe,
     name: 'Dev.to',
     handle: 'gentillenoir',
     href: 'https://dev.to/gentillenoir',
   },
   {
+    icon: FiGlobe,
     name: 'Facebook',
     handle: 'Profil officiel',
     href: 'https://web.facebook.com/profile.php?id=61576314604030',
   },
   {
+    icon: FiTwitter,
     name: 'X',
     handle: '@GentilLeNoiR',
     href: 'https://x.com/@GentilLeNoiR',
   },
 ];
+
+const renderIcon = (Icon: any, className?: string) =>
+  React.createElement(Icon as any, className ? { className, 'aria-hidden': true } : { 'aria-hidden': true });
 
 const Contacts = () => {
   return (
@@ -111,11 +139,11 @@ const Contacts = () => {
             <div className="hero-actions">
               <a href="https://wa.me/243978089552" target="_blank" rel="noreferrer" className="hero-btn hero-btn-primary">
                 Ouvrir WhatsApp
-                <span aria-hidden="true">-&gt;</span>
+                {renderIcon(FiArrowRight)}
               </a>
               <a href="mailto:gentillenoir075@outlook.com" className="hero-btn hero-btn-secondary">
                 Envoyer un email
-                <span aria-hidden="true">-&gt;</span>
+                {renderIcon(FiArrowRight)}
               </a>
             </div>
 
@@ -148,7 +176,7 @@ const Contacts = () => {
                 rel="noreferrer"
                 className="priority-contact"
               >
-                <div className="priority-icon">WA</div>
+                <div className="priority-icon">{renderIcon(FiMessageCircle)}</div>
                 <div>
                   <strong>WhatsApp direct</strong>
                   <span>+243 978 089 552</span>
@@ -195,8 +223,11 @@ const Contacts = () => {
                 className={`quick-card ${contact.accent}`}
               >
                 <div className="quick-card-top">
-                  <span className="quick-badge">{contact.label}</span>
-                  <span className="quick-arrow">-&gt;</span>
+                  <span className="quick-badge">
+                    {renderIcon(contact.icon)}
+                    {contact.label}
+                  </span>
+                  <span className="quick-arrow">{renderIcon(FiArrowRight)}</span>
                 </div>
                 <strong>{contact.value}</strong>
                 <p>{contact.note}</p>
@@ -217,8 +248,13 @@ const Contacts = () => {
               <div className="email-list">
                 {emails.map((email) => (
                   <a key={email.value} href={email.href} className="email-card">
-                    <span className="email-card-label">{email.label}</span>
-                    <strong>{email.value}</strong>
+                    <div>
+                      <span className="email-card-label">
+                        {renderIcon(email.icon)}
+                        {email.label}
+                      </span>
+                      <strong>{email.value}</strong>
+                    </div>
                   </a>
                 ))}
               </div>
@@ -233,10 +269,13 @@ const Contacts = () => {
                 {socials.map((social) => (
                   <a key={social.name} href={social.href} target="_blank" rel="noreferrer" className="social-card">
                     <div>
-                      <span className="social-name">{social.name}</span>
+                      <span className="social-name">
+                        {renderIcon(social.icon)}
+                        {social.name}
+                      </span>
                       <strong>{social.handle}</strong>
                     </div>
-                    <span className="social-arrow">-&gt;</span>
+                    <span className="social-arrow">{renderIcon(FiExternalLink)}</span>
                   </a>
                 ))}
               </div>

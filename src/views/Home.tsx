@@ -1,11 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
+import {
+  FiArrowRight,
+  FiCode,
+  FiDownload,
+  FiExternalLink,
+  FiGithub,
+  FiGlobe,
+  FiLayers,
+  FiLinkedin,
+  FiMail,
+  FiMessageCircle,
+  FiMonitor,
+  FiPhone,
+  FiSend,
+  FiZap,
+} from 'react-icons/fi';
 import '../css/views/Home.css';
 import ContactForm from '../components/ContactForm';
 
 type SectionId = 'hero' | 'about' | 'focus' | 'services' | 'contact';
 
 type Service = {
-  icon: string;
+  icon: any;
   title: string;
   text: string;
   link: string;
@@ -13,7 +29,7 @@ type Service = {
 };
 
 type ContactLink = {
-  icon: string;
+  icon: any;
   label: string;
   value: string;
   href: string;
@@ -27,28 +43,28 @@ type SocialLink = {
 
 const services: Service[] = [
   {
-    icon: '</>',
+    icon: FiMonitor,
     title: 'Interfaces web premium',
     text: 'Sites vitrines, dashboards et applications modernes avec une attention forte au design, au motion et aux performances.',
     link: '/portfolio',
     linkLabel: 'Explorer mes réalisations',
   },
   {
-    icon: '[]',
+    icon: FiLayers,
     title: 'Full stack & architecture',
     text: 'Développement frontend et backend, structuration de projet, intégration API et amélioration de l’expérience utilisateur.',
     link: '/portfolio',
     linkLabel: 'Voir mes projets',
   },
   {
-    icon: '++',
+    icon: FiZap,
     title: 'Correction & optimisation',
     text: 'Refonte visuelle, correction de bugs, nettoyage du code et montée en qualité d’un produit déjà en ligne.',
     link: '/contacts',
     linkLabel: 'Lancer une collaboration',
   },
   {
-    icon: 'IoT',
+    icon: FiCode,
     title: 'Électronique & prototypes',
     text: 'Projets embarqués, IoT, microcontrôleurs et passerelles entre matériel et logiciel pour des produits concrets.',
     link: '/portfolio',
@@ -58,37 +74,37 @@ const services: Service[] = [
 
 const contacts: ContactLink[] = [
   {
-    icon: 'WA',
+    icon: FiMessageCircle,
     label: 'WhatsApp',
     value: '+243 978 089 552',
     href: 'https://wa.me/243978089552',
   },
   {
-    icon: 'TEL',
+    icon: FiPhone,
     label: 'Téléphone',
     value: '+250 792 871 952',
     href: 'tel:+250792871952',
   },
   {
-    icon: 'TEL',
+    icon: FiPhone,
     label: 'Téléphone',
     value: '+250 738 663 519',
     href: 'tel:+250738663519',
   },
   {
-    icon: 'TG',
+    icon: FiSend,
     label: 'Telegram',
     value: '+250 738 663 519',
     href: 'https://t.me/+250738663519',
   },
   {
-    icon: 'MAIL',
+    icon: FiMail,
     label: 'Email',
     value: 'gentillenoir075@outlook.com',
     href: 'mailto:gentillenoir075@outlook.com',
   },
   {
-    icon: 'MAIL',
+    icon: FiMail,
     label: 'Email',
     value: 'gentillenoir075@gmail.com',
     href: 'mailto:gentillenoir075@gmail.com',
@@ -102,6 +118,9 @@ const socials: SocialLink[] = [
   { label: 'Facebook', href: 'https://web.facebook.com/profile.php?id=61576314604030', accent: 'var(--accent-orange)' },
   { label: 'X', href: 'https://x.com/@GentilLeNoiR', accent: 'var(--accent-pink)' },
 ];
+
+const renderIcon = (Icon: any, className?: string) =>
+  React.createElement(Icon as any, className ? { className, 'aria-hidden': true } : { 'aria-hidden': true });
 
 const Home = () => {
   const gentilAge = new Date().getFullYear() - 2007;
@@ -171,15 +190,15 @@ const Home = () => {
             <div className="hero-actions">
               <a href="/portfolio" className="btn btn-primary">
                 Voir mes projets
-                <span aria-hidden="true">-&gt;</span>
+                {renderIcon(FiArrowRight)}
               </a>
-              <a href="/doc/cv.fr.pdf" target="_blank" rel="noreferrer" className="btn btn-secondary">
+              <a href="/cv/fr" className="btn btn-secondary">
                 CV Français
-                <span aria-hidden="true">PDF</span>
+                {renderIcon(FiDownload)}
               </a>
-              <a href="/doc/cv.en.pdf" target="_blank" rel="noreferrer" className="btn btn-ghost">
+              <a href="/cv/en" className="btn btn-ghost">
                 Resume English
-                <span aria-hidden="true">PDF</span>
+                {renderIcon(FiDownload)}
               </a>
             </div>
 
@@ -227,7 +246,7 @@ const Home = () => {
 
                 <div className="floating-card social-card">
                   <a href="https://github.com/gentil-lenoir" target="_blank" rel="noreferrer" aria-label="GitHub">
-                    GH
+                    {renderIcon(FiGithub)}
                   </a>
                   <a
                     href="https://www.linkedin.com/in/gentil-lenoir-maliyamungu"
@@ -235,10 +254,10 @@ const Home = () => {
                     rel="noreferrer"
                     aria-label="LinkedIn"
                   >
-                    IN
+                    {renderIcon(FiLinkedin)}
                   </a>
                   <a href="https://dev.to/gentillenoir" target="_blank" rel="noreferrer" aria-label="Dev.to">
-                    DEV
+                    {renderIcon(FiGlobe)}
                   </a>
                 </div>
               </div>
@@ -323,7 +342,7 @@ const Home = () => {
               className="btn btn-primary"
             >
               Découvrir le projet
-              <span aria-hidden="true">-&gt;</span>
+              {renderIcon(FiExternalLink)}
             </a>
           </div>
         </div>
@@ -339,12 +358,12 @@ const Home = () => {
           <div className="services-grid">
             {services.map((service) => (
               <article className="service-card" key={service.title}>
-                <div className="service-icon">{service.icon}</div>
+                <div className="service-icon">{renderIcon(service.icon)}</div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
                 <a href={service.link} className="service-link">
                   {service.linkLabel}
-                  <span aria-hidden="true">-&gt;</span>
+                  {renderIcon(FiArrowRight)}
                 </a>
               </article>
             ))}
@@ -367,7 +386,7 @@ const Home = () => {
             <div className="contact-cards">
               {contacts.map((item) => (
                 <a className="contact-card" href={item.href} key={`${item.label}-${item.value}`}>
-                  <span className="contact-card-icon">{item.icon}</span>
+                  <span className="contact-card-icon">{renderIcon(item.icon)}</span>
                   <span className="contact-card-copy">
                     <strong>{item.label}</strong>
                     <span>{item.value}</span>
@@ -389,7 +408,7 @@ const Home = () => {
                     style={{ '--social-accent': social.accent } as React.CSSProperties}
                   >
                     {social.label}
-                    <span aria-hidden="true">-&gt;</span>
+                    {renderIcon(FiExternalLink)}
                   </a>
                 ))}
               </div>

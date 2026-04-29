@@ -18,22 +18,16 @@ const imageData = [
   { filename: 'gentil3.jpg', category: 'portraits', title: 'Gentil - Au répos', date: '2024' },
   { filename: 'gentil4.jpg', category: 'portraits', title: 'Gentil - Portrait', date: '2026' },
   { filename: 'gentil5.jpg', category: 'portraits', title: 'Gentil - Studio', date: '2025' },
-  
-  // Projets (6-8)
   { filename: 'gentil6.jpg', category: 'projects', title: 'Développement web - Quevvy Platform', date: '2026', featured: true },
   { filename: 'gentil7.jpg', category: 'portraits', title: 'Ancien portrait', date: '2024' },
   { filename: 'gentil8.jpg', category: 'quevvy', title: 'Présentation - Vision de Quevvy', date: '2026', featured: true },
-  
-  // Événements (9-11)
   { filename: 'gentil9.jpg', category: 'events', title: 'Epoque scolaire', date: '2023'},
   { filename: 'gentil10.jpg', category: 'portraits', title: 'Ancien Portrait', date: '2024' },
   { filename: 'gentil11.jpg', category: 'events', title: 'Evenement Spécial', date: '2024' },
-  
-  // Quevvy (12-15)
   { filename: 'gentil12.jpg', category: 'quevvy', title: 'Quevvy - Présentation produit', date: '2024', featured: true },
   { filename: 'gentil13.jpg', category: 'projects', title: 'Eléctronique - Équipe', date: '2025' },
   { filename: 'gentil14.jpg', category: 'events', title: 'Ancien Portait', date: '2024' },
-  { filename: 'azenium_partner.jpg', category: 'quevvy', title: 'Quevvy - Partenariat', date: '2024' }
+  { filename: 'sitex_features.png', category: 'quevvy', title: 'SiteX Quevvy', date: '2026', featured: true }
 ];
 
 const Images = () => {

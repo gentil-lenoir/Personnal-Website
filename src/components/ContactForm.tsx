@@ -1,102 +1,127 @@
 import React, { useState } from 'react';
+import { FiMail, FiMessageSquare, FiSend, FiType, FiUser } from 'react-icons/fi';
 import '../css/components/ContactForm.css';
+
+const renderIcon = (Icon: any, className?: string) =>
+  React.createElement(Icon as any, className ? { className, 'aria-hidden': true } : { 'aria-hidden': true });
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
+  const [isPrepared, setIsPrepared] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
+    if (isPrepared) {
+      setIsPrepared(false);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Construction du mailto avec les données du formulaire
+
     const subject = encodeURIComponent(formData.subject || 'Nouveau message depuis votre portfolio');
     const body = encodeURIComponent(
       `Nom: ${formData.name}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`
+        `Email: ${formData.email}\n\n` +
+        `Message:\n${formData.message}`
     );
-    
-    // Ouverture du client email par défaut
+
+    setIsPrepared(true);
     window.location.href = `mailto:gentillenoir075@outlook.com?subject=${subject}&body=${body}`;
-    
-    // Optionnel: Afficher un message de succès
-    alert('Votre message a été préparé ! Veuillez l\'envoyer depuis votre client email.');
   };
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="name">Nom complet</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          placeholder="Jean Dupont"
-        />
+      <div className="contact-form-intro">
+        <span className="contact-form-badge">Message email</span>
+        <h3 className="contact-form-title">Prépare ton message proprement.</h3>
+        <p className="contact-form-subtitle">
+          Le formulaire ouvre ton client mail avec les champs déjà remplis, pour un envoi plus rapide.
+        </p>
+      </div>
+
+      <div className="form-grid">
+        <div className="form-group">
+          <label htmlFor="name">
+            <span className="label-icon">{renderIcon(FiUser)}</span>
+            Nom complet
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="Jean Dupont"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">
+            <span className="label-icon">{renderIcon(FiMail)}</span>
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder="jean.dupont@email.com"
+          />
+        </div>
       </div>
 
       <div className="form-group">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          placeholder="jean.dupont@email.com"
-        />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="subject">Sujet</label>
+        <label htmlFor="subject">
+          <span className="label-icon">{renderIcon(FiType)}</span>
+          Sujet
+        </label>
         <input
           type="text"
           id="subject"
           name="subject"
           value={formData.subject}
           onChange={handleChange}
-          placeholder="Collaboration, projet, question..."
+          placeholder="Collaboration, mission, produit, question..."
         />
       </div>
 
       <div className="form-group">
-        <label htmlFor="message">Message</label>
+        <label htmlFor="message">
+          <span className="label-icon">{renderIcon(FiMessageSquare)}</span>
+          Message
+        </label>
         <textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
           required
-          rows={6}
-          placeholder="Décrivez votre projet ou votre demande..."
+          rows={7}
+          placeholder="Décris ton besoin, le contexte et le résultat attendu..."
         />
       </div>
 
-      <button type="submit" className="form-submit btn btn-primary" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem' }}>
-        <span>Envoyer le message</span>
-        <svg className="submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ width: '1.2em', height: '1.2em' }}>
-          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+      <button type="submit" className="form-submit">
+        {renderIcon(FiSend, 'submit-icon')}
+        <span>Préparer le message</span>
       </button>
 
-      <p className="form-note-footer" style={{ marginTop: '1rem', fontSize: '0.85rem', opacity: 0.7, textAlign: 'center', color: 'rgba(255, 255, 255, 0.7)' }}>
-        ℹ️ En cliquant sur "Envoyer", votre client email s'ouvrira avec le message pré-rempli.
-        Il ne vous restera plus qu'à l'envoyer depuis votre boîte mail.
+      <p className={`form-note-footer ${isPrepared ? 'success' : ''}`}>
+        {isPrepared
+          ? 'Le message a été préparé. Il ne reste plus qu’à l’envoyer depuis ta boîte mail.'
+          : 'Le formulaire ne perd pas ton temps: il prépare directement un email clair et prêt à partir.'}
       </p>
     </form>
   );
