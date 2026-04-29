@@ -147,12 +147,21 @@ const Home = () => {
           }
         });
       },
-      { threshold: 0.25, rootMargin: '-5% 0px -10% 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
     );
 
     sectionIds.forEach((id) => {
       const section = sectionsRef.current[id];
-      if (section) observer.observe(section);
+      if (!section) return;
+
+      // Si la section est déjà visible dans le viewport au montage, on la révèle immédiatement
+      const rect = section.getBoundingClientRect();
+      const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inViewport) {
+        section.classList.add('section-visible');
+      }
+
+      observer.observe(section);
     });
 
     return () => observer.disconnect();

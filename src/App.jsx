@@ -4,7 +4,8 @@ import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';
 import Loading from './components/Loadding.tsx';
 import ErrorBoundary from './components/ErrorBoundary.tsx';
-import { Analytics } from "@vercel/analytics/react"
+import ScrollToTop from './components/ScrollToTop';
+import { Analytics } from '@vercel/analytics/react';
 import './ignore-ts-errors.ts';
 
 const Home = lazy(() => import('./views/Home.tsx'));
@@ -28,6 +29,7 @@ const cvAliases = [
 const App = () => (
   <Router>
     <Analytics />
+    <ScrollToTop />  {/* ← doit être ici, à l'intérieur de <Router> mais hors de <Routes> */}
     <Header />
     <main style={{ minHeight: '70vh' }}>
       <Suspense fallback={<Loading />}>
