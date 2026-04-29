@@ -1,7 +1,7 @@
 /* TEAM */
 Developer: Gentil Le NoiR MALIYAMUNGU
 Role: Ingénieur Logiciel & Développeur Full-Stack
-Website: https://gentil-lenoir.vercel.app
+Website: https://gentil.quevvy.com
 Email: gentil.maliyamungu@example.com
 Location: Goma, Nord-Kivu, République Démocratique du Congo
 Timezone: Africa/Lubumbashi (GMT+2)

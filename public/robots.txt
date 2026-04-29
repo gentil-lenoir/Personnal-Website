@@ -29,9 +29,9 @@ Allow: /
 Disallow: /api/
 
 # Sitemaps
-Sitemap: https://gentil-lenoir.vercel.app/sitemap.xml
+Sitemap: https://gentil.quevvy.com/sitemap.xml
 
 # Crawl-delay (respectueux)
 Crawl-delay: 1
 
-Host: https://gentil-lenoir.vercel.app
+Host: https://gentil.quevvy.com

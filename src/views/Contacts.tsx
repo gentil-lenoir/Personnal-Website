@@ -37,8 +37,8 @@ const Contacts = () => {
     },
     { 
       type: 'Phone', 
-      value: '+250 729 606 087',
-      link: 'tel:+250729606087',
+      value: '+250 792 871 952',
+      link: 'tel:+250792871952',
       icon: '☎'
     }
   ];
