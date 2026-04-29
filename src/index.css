@@ -5,74 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* Background animé avec dégradé */
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  
-  /* Assurer que le background couvre toute la page */
-  min-height: 80vh;
-}
-
-/* Animation du dégradé */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Version alternative avec des couleurs plus soft */
-/*
-body {
-  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-  background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
-}
-*/
-
-/* Version bleu/noir élégante */
-/*
-body {
-  background: linear-gradient(-45deg, #0f0f11, #18181b, #1e3a8a, #38bdf8);
-  background-size: 400% 400%;
-  animation: gradientShift 18s ease infinite;
-}
-*/
-
-/* Version avec effet de particules */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
-  animation: particleMove 20s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes particleMove {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-30px) rotate(120deg);
-  }
-  66% {
-    transform: translateY(15px) rotate(240deg);
-  }
 }
 
 code {
@@ -83,5 +15,4 @@ code {
 /* Assurer que le contenu reste lisible */
 .app {
   position: relative;
-  z-index: 1;
 }
