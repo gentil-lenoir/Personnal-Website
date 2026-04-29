@@ -1,103 +1,255 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/views/Contacts.css';
 import ContactForm from '../components/ContactForm';
 
-const Contacts = () => {
-  const contacts = [
-    { 
-      type: 'Email', 
-      value: 'gentillenoir075@outlook.com', 
-      link: 'mailto:gentillenoir075@outlook.com',
-      icon: '✉',
-      primary: true
-    },
-    { 
-      type: 'WhatsApp', 
-      value: '+243 978 089 552', 
-      link: 'https://wa.me/243978089552',
-      icon: '💭'
-    },
-    { 
-      type: 'LinkedIn', 
-      value: 'Gentil Le NoiR', 
-      link: 'https://www.linkedin.com/in/gentil-lenoir-maliyamungu',
-      icon: '◇'
-    },
-    { 
-      type: 'GitHub', 
-      value: '@gentil-lenoir', 
-      link: 'https://github.com/gentil-lenoir',
-      icon: '◈'
-    },
-    { 
-      type: 'Telegram', 
-      value: '@lenoirgentil', 
-      link: 'https://t.me/lenoirgentil',
-      icon: '▶'
-    },
-    { 
-      type: 'Phone', 
-      value: '+250 792 871 952',
-      link: 'tel:+250792871952',
-      icon: '☎'
-    }
-  ];
+type PrimaryContact = {
+  label: string;
+  value: string;
+  href: string;
+  note: string;
+  accent: string;
+};
 
+type SocialPlatform = {
+  name: string;
+  handle: string;
+  href: string;
+};
+
+const primaryContacts: PrimaryContact[] = [
+  {
+    label: 'WhatsApp',
+    value: '+243 978 089 552',
+    href: 'https://wa.me/243978089552',
+    note: 'Le canal le plus direct pour une réponse rapide.',
+    accent: 'signal-green',
+  },
+  {
+    label: 'Téléphone',
+    value: '+250 792 871 952',
+    href: 'tel:+250792871952',
+    note: 'Disponible pour appels, missions et collaborations.',
+    accent: 'signal-blue',
+  },
+  {
+    label: 'Téléphone',
+    value: '+250 738 663 519',
+    href: 'tel:+250738663519',
+    note: 'Deuxième ligne de contact pour rester joignable.',
+    accent: 'signal-cyan',
+  },
+  {
+    label: 'Telegram',
+    value: '+250 738 663 519',
+    href: 'https://t.me/+250738663519',
+    note: 'Pratique pour échanges rapides et suivi de projet.',
+    accent: 'signal-gold',
+  },
+];
+
+const emails = [
+  {
+    label: 'Email principal',
+    value: 'gentillenoir075@outlook.com',
+    href: 'mailto:gentillenoir075@outlook.com',
+  },
+  {
+    label: 'Email secondaire',
+    value: 'gentillenoir075@gmail.com',
+    href: 'mailto:gentillenoir075@gmail.com',
+  },
+];
+
+const socials: SocialPlatform[] = [
+  {
+    name: 'GitHub',
+    handle: '@gentil-lenoir',
+    href: 'https://github.com/gentil-lenoir',
+  },
+  {
+    name: 'LinkedIn',
+    handle: 'Gentil Le NoiR Maliyamungu',
+    href: 'https://www.linkedin.com/in/gentil-lenoir-maliyamungu',
+  },
+  {
+    name: 'Dev.to',
+    handle: 'gentillenoir',
+    href: 'https://dev.to/gentillenoir',
+  },
+  {
+    name: 'Facebook',
+    handle: 'Profil officiel',
+    href: 'https://web.facebook.com/profile.php?id=61576314604030',
+  },
+  {
+    name: 'X',
+    handle: '@GentilLeNoiR',
+    href: 'https://x.com/@GentilLeNoiR',
+  },
+];
+
+const Contacts = () => {
   return (
     <main className="contacts-page">
-      {/* Hero Section */}
       <section className="contacts-hero">
-        <div className="contacts-hero-content">
-          <h1 className="contacts-hero-title">
-            Restons en <span className="gradient-text">Contact</span>
-          </h1>
-          <p className="contacts-hero-description">
-            Vous avez un projet ? Une idée ? Une opportunité de collaboration ?
-            Je suis à votre écoute pour discuter de vos besoins.
-          </p>
+        <div className="hero-orb orb-left" />
+        <div className="hero-orb orb-right" />
+
+        <div className="container contacts-hero-layout">
+          <div className="contacts-hero-copy">
+            <span className="hero-kicker">Contact • Collaboration • Disponibilité</span>
+            <h1 className="contacts-hero-title">
+              Parlons de ton projet avec un canal
+              <span className="gradient-text"> simple, rapide et professionnel.</span>
+            </h1>
+            <p className="contacts-hero-description">
+              Pour une mission freelance, un stage, une intégration en équipe, une opportunité
+              produit ou une collaboration autour de <span translate="no">Quevvy Platform</span>, tu peux
+              me joindre via WhatsApp, téléphone, email ou réseaux pro.
+            </p>
+
+            <div className="hero-actions">
+              <a href="https://wa.me/243978089552" target="_blank" rel="noreferrer" className="hero-btn hero-btn-primary">
+                Ouvrir WhatsApp
+                <span aria-hidden="true">-&gt;</span>
+              </a>
+              <a href="mailto:gentillenoir075@outlook.com" className="hero-btn hero-btn-secondary">
+                Envoyer un email
+                <span aria-hidden="true">-&gt;</span>
+              </a>
+            </div>
+
+            <div className="hero-mini-stats">
+              <div className="mini-stat">
+                <strong>2</strong>
+                <span>emails actifs</span>
+              </div>
+              <div className="mini-stat">
+                <strong>3</strong>
+                <span>canaux directs</span>
+              </div>
+              <div className="mini-stat">
+                <strong>5</strong>
+                <span>réseaux professionnels</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-contact-panel">
+            <div className="hero-panel-card">
+              <div className="panel-head">
+                <span className="panel-pill">Canal recommandé</span>
+                <h2>Réponse rapide</h2>
+              </div>
+
+              <a
+                href="https://wa.me/243978089552"
+                target="_blank"
+                rel="noreferrer"
+                className="priority-contact"
+              >
+                <div className="priority-icon">WA</div>
+                <div>
+                  <strong>WhatsApp direct</strong>
+                  <span>+243 978 089 552</span>
+                </div>
+              </a>
+
+              <div className="availability-grid">
+                <div className="availability-card">
+                  <span className="availability-label">Localisation</span>
+                  <strong>Kigali / RDC</strong>
+                </div>
+                <div className="availability-card">
+                  <span className="availability-label">Types d&apos;échanges</span>
+                  <strong>Call, chat, email</strong>
+                </div>
+                <div className="availability-card">
+                  <span className="availability-label">Sujets</span>
+                  <strong>Web, produit, équipe</strong>
+                </div>
+                <div className="availability-card">
+                  <span className="availability-label">Priorité</span>
+                  <strong>Réactivité & clarté</strong>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Contact Cards */}
-      <section className="contacts-grid-section">
+      <section className="contacts-quick-access">
         <div className="container">
-          <div className="contacts-grid">
-            {contacts.map((contact, idx) => (
-              <a 
-                key={idx}
-                href={contact.link}
-                target={contact.link.startsWith('http') ? '_blank' : '_self'}
-                rel="noopener noreferrer"
-                className="contact-card-link"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+          <div className="section-heading">
+            <span className="section-kicker">Accès direct</span>
+            <h2>Choisis le canal qui te convient.</h2>
+          </div>
+
+          <div className="quick-grid">
+            {primaryContacts.map((contact) => (
+              <a
+                key={`${contact.label}-${contact.value}`}
+                href={contact.href}
+                target={contact.href.startsWith('http') ? '_blank' : undefined}
+                rel={contact.href.startsWith('http') ? 'noreferrer' : undefined}
+                className={`quick-card ${contact.accent}`}
               >
-                <div className="contact-card">
-                  <div className="contact-card-icon">{contact.icon}</div>
-                  <div className="contact-card-content">
-                    <h3 className="contact-card-type">{contact.type}</h3>
-                    <p className="contact-card-value">{contact.value}</p>
-                  </div>
-                  <div className="contact-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
+                <div className="quick-card-top">
+                  <span className="quick-badge">{contact.label}</span>
+                  <span className="quick-arrow">-&gt;</span>
                 </div>
+                <strong>{contact.value}</strong>
+                <p>{contact.note}</p>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="contact-form-section">
-        <div className="container">
-          <div className="contact-form-container">
-            <div className="contact-form-header">
-              <h2 className="contact-form-title">Envoyez-moi un message</h2>
-              <p className="contact-form-description">
-                Remplissez le formulaire ci-dessous et je vous répondrai dans les plus brefs délais.
-                Votre message sera automatiquement envoyé à mon adresse email.
+      <section className="contacts-details-section">
+        <div className="container contacts-details-layout">
+          <div className="details-column">
+            <article className="info-panel">
+              <div className="section-heading section-heading-left">
+                <span className="section-kicker">Emails</span>
+                <h2>Pour une demande structurée.</h2>
+              </div>
+              <div className="email-list">
+                {emails.map((email) => (
+                  <a key={email.value} href={email.href} className="email-card">
+                    <span className="email-card-label">{email.label}</span>
+                    <strong>{email.value}</strong>
+                  </a>
+                ))}
+              </div>
+            </article>
+
+            <article className="info-panel">
+              <div className="section-heading section-heading-left">
+                <span className="section-kicker">Réseaux</span>
+                <h2>Mon univers pro et public.</h2>
+              </div>
+              <div className="social-list">
+                {socials.map((social) => (
+                  <a key={social.name} href={social.href} target="_blank" rel="noreferrer" className="social-card">
+                    <div>
+                      <span className="social-name">{social.name}</span>
+                      <strong>{social.handle}</strong>
+                    </div>
+                    <span className="social-arrow">-&gt;</span>
+                  </a>
+                ))}
+              </div>
+            </article>
+          </div>
+
+          <div className="form-panel">
+            <div className="form-panel-head">
+              <span className="section-kicker">Formulaire</span>
+              <h2>Décris ton besoin clairement.</h2>
+              <p>
+                Utilise ce formulaire si tu veux préparer un message plus complet. Il ouvrira
+                ensuite ton client email avec les informations déjà remplies.
               </p>
             </div>
             <ContactForm />
@@ -105,16 +257,21 @@ const Contacts = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="contact-cta">
-        <div className="container">
-          <h2 className="cta-title">Prêt à démarrer votre projet ?</h2>
-          <p className="cta-description">
-            Discutons de vos besoins et trouvons ensemble la meilleure solution.
+      <section className="contact-closing">
+        <div className="container closing-shell">
+          <h2>Disponible pour construire quelque chose de sérieux.</h2>
+          <p>
+            Produit web, redesign, correction, collaboration technique ou opportunité
+            professionnelle: on peut démarrer par WhatsApp, appel ou email.
           </p>
-          <a href="mailto:gentillenoir075@outlook.com" className="btn btn-primary btn-large">
-            Envoyez-moi un email directement
-          </a>
+          <div className="closing-actions">
+            <a href="tel:+250792871952" className="hero-btn hero-btn-secondary">
+              Appeler maintenant
+            </a>
+            <a href="https://github.com/gentil-lenoir" target="_blank" rel="noreferrer" className="hero-btn hero-btn-primary">
+              Voir mon GitHub
+            </a>
+          </div>
         </div>
       </section>
     </main>
