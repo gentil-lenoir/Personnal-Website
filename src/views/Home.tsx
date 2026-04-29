@@ -1,382 +1,407 @@
-import React, { useEffect, useState, useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../css/views/Home.css';
 import ContactForm from '../components/ContactForm';
 
+type SectionId = 'hero' | 'about' | 'focus' | 'services' | 'contact';
+
+type Service = {
+  icon: string;
+  title: string;
+  text: string;
+  link: string;
+  linkLabel: string;
+};
+
+type ContactLink = {
+  icon: string;
+  label: string;
+  value: string;
+  href: string;
+};
+
+type SocialLink = {
+  label: string;
+  href: string;
+  accent: string;
+};
+
+const services: Service[] = [
+  {
+    icon: '</>',
+    title: 'Interfaces web premium',
+    text: 'Sites vitrines, dashboards et applications modernes avec une attention forte au design, au motion et aux performances.',
+    link: '/portfolio',
+    linkLabel: 'Explorer mes réalisations',
+  },
+  {
+    icon: '[]',
+    title: 'Full stack & architecture',
+    text: 'Développement frontend et backend, structuration de projet, intégration API et amélioration de l’expérience utilisateur.',
+    link: '/portfolio',
+    linkLabel: 'Voir mes projets',
+  },
+  {
+    icon: '++',
+    title: 'Correction & optimisation',
+    text: 'Refonte visuelle, correction de bugs, nettoyage du code et montée en qualité d’un produit déjà en ligne.',
+    link: '/contacts',
+    linkLabel: 'Lancer une collaboration',
+  },
+  {
+    icon: 'IoT',
+    title: 'Électronique & prototypes',
+    text: 'Projets embarqués, IoT, microcontrôleurs et passerelles entre matériel et logiciel pour des produits concrets.',
+    link: '/portfolio',
+    linkLabel: 'Découvrir cet univers',
+  },
+];
+
+const contacts: ContactLink[] = [
+  {
+    icon: 'WA',
+    label: 'WhatsApp',
+    value: '+243 978 089 552',
+    href: 'https://wa.me/243978089552',
+  },
+  {
+    icon: 'TEL',
+    label: 'Téléphone',
+    value: '+250 792 871 952',
+    href: 'tel:+250792871952',
+  },
+  {
+    icon: 'TEL',
+    label: 'Téléphone',
+    value: '+250 738 663 519',
+    href: 'tel:+250738663519',
+  },
+  {
+    icon: 'TG',
+    label: 'Telegram',
+    value: '+250 738 663 519',
+    href: 'https://t.me/+250738663519',
+  },
+  {
+    icon: 'MAIL',
+    label: 'Email',
+    value: 'gentillenoir075@outlook.com',
+    href: 'mailto:gentillenoir075@outlook.com',
+  },
+  {
+    icon: 'MAIL',
+    label: 'Email',
+    value: 'gentillenoir075@gmail.com',
+    href: 'mailto:gentillenoir075@gmail.com',
+  },
+];
+
+const socials: SocialLink[] = [
+  { label: 'GitHub', href: 'https://github.com/gentil-lenoir', accent: 'var(--accent-cyan)' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gentil-lenoir-maliyamungu', accent: 'var(--accent-blue)' },
+  { label: 'Dev.to', href: 'https://dev.to/gentillenoir', accent: 'var(--accent-gold)' },
+  { label: 'Facebook', href: 'https://web.facebook.com/profile.php?id=61576314604030', accent: 'var(--accent-orange)' },
+  { label: 'X', href: 'https://x.com/@GentilLeNoiR', accent: 'var(--accent-pink)' },
+];
+
 const Home = () => {
   const gentilAge = new Date().getFullYear() - 2007;
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
-  const sectionsRef = useRef<HTMLElement[]>([]);
-  
-  // ✅ FIX RENDER LOOP: Memoized progress calculation
-  const progressWidth = useMemo(() => {
-    if (sectionsRef.current.length === 0) return '25%';
-    const activeIndex = sectionsRef.current.findIndex(s => s?.id === activeSection);
-    return activeIndex >= 0 ? `${(activeIndex + 1) * 25}%` : '25%';
-  }, [sectionsRef.current.length, activeSection]);
+  const sectionIds: SectionId[] = ['hero', 'about', 'focus', 'services', 'contact'];
+  const [activeSection, setActiveSection] = useState<SectionId>('hero');
+  const sectionsRef = useRef<Record<SectionId, HTMLElement | null>>({
+    hero: null,
+    about: null,
+    focus: null,
+    services: null,
+    contact: null,
+  });
 
   useEffect(() => {
-    setIsVisible(true);
-    
-    // Intersection Observer for animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('section-visible');
-            setActiveSection(entry.target.id || 'hero');
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add('section-visible');
+          const nextId = entry.target.id as SectionId;
+          if (sectionIds.includes(nextId)) {
+            setActiveSection(nextId);
           }
         });
       },
-      { threshold: 0.2, rootMargin: '0px' }
+      { threshold: 0.25, rootMargin: '-5% 0px -10% 0px' }
     );
 
-    sectionsRef.current.forEach((section) => {
+    sectionIds.forEach((id) => {
+      const section = sectionsRef.current[id];
       if (section) observer.observe(section);
     });
 
     return () => observer.disconnect();
   }, []);
 
-  // Function to add sections to ref
-  const addToRefs = (el: HTMLElement | null) => {
-    if (el && !sectionsRef.current.includes(el)) {
-      sectionsRef.current.push(el);
-    }
+  const progressWidth = `${((sectionIds.indexOf(activeSection) + 1) / sectionIds.length) * 100}%`;
+
+  const registerSection = (id: SectionId) => (el: HTMLElement | null) => {
+    sectionsRef.current[id] = el;
   };
 
   return (
     <main className="home">
-      {/* Navigation Progress Bar - FIXED */}
       <div className="progress-bar" style={{ width: progressWidth }} />
 
-      {/* Hero Section */}
-      <section id="hero" className="hero-section" ref={addToRefs}>
-        <div className="hero-container">
-          <div className="hero-grid">
-            <div className="hero-content">
-              <div className="hero-badge">⚡ Développeur Full Stack & Electronicien</div>
-              <h1 className="hero-title">
-                <span className="hero-title-greeting">Bonjour, je suis</span>
-                <span className="hero-title-name" translate='no'>Gentil Le NoiR M.B.</span>
-              </h1>
-              <p className="hero-description">
-                Je transforme vos idées en expériences numériques exceptionnelles. 
-                Développeur Web <span translate='no'>FullStack</span>, Programmeur et étudiant en 
-                Software Engineering à UNILAK/Kigali.
-              </p>
-              <div className="hero-cta">
-                <a href="/portfolio" className="btn btn-primary">
-                  Voir mes projets
-                  <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-                <a href="/contacts" className="btn btn-outline">
-                  Me contacter
-                </a>
+      <section id="hero" className="hero-section" ref={registerSection('hero')}>
+        <div className="hero-orb hero-orb-one" />
+        <div className="hero-orb hero-orb-two" />
+
+        <div className="container hero-shell">
+          <div className="hero-copy">
+            <span className="eyebrow">Portfolio développeur • Kigali / RDC • Disponible</span>
+
+            <h1 className="hero-title">
+              Je conçois des expériences
+              <span className="hero-title-highlight"> web élégantes, techniques et crédibles.</span>
+            </h1>
+
+            <p className="hero-description">
+              Je suis <span translate="no">Gentil Le NoiR Maliyamungu</span>, développeur full stack,
+              étudiant en Software Engineering à UNILAK et fondateur d&apos;Azenium. Je crée des
+              produits numériques qui allient esthétique, clarté métier et ambition technique.
+            </p>
+
+            <div className="hero-actions">
+              <a href="/portfolio" className="btn btn-primary">
+                Voir mes projets
+                <span aria-hidden="true">-&gt;</span>
+              </a>
+              <a href="/doc/cv.fr.pdf" target="_blank" rel="noreferrer" className="btn btn-secondary">
+                CV Français
+                <span aria-hidden="true">PDF</span>
+              </a>
+              <a href="/doc/cv.en.pdf" target="_blank" rel="noreferrer" className="btn btn-ghost">
+                Resume English
+                <span aria-hidden="true">PDF</span>
+              </a>
+            </div>
+
+            <div className="hero-metrics">
+              <div className="metric-card">
+                <span className="metric-value">{gentilAge} ans</span>
+                <span className="metric-label">Énergie, progression et discipline</span>
               </div>
-              <div className="hero-stats">
-                <div className="stat-item">
-                  <span className="stat-number">5+</span>
-                  <span className="stat-label">Années d'expérience</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">7+</span>
-                  <span className="stat-label">Projets réalisés</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">20+</span>
-                  <span className="stat-label">Clients satisfaits</span>
-                </div>
+              <div className="metric-card">
+                <span className="metric-value">Full stack</span>
+                <span className="metric-label">Frontend, backend, UX et vision produit</span>
+              </div>
+              <div className="metric-card">
+                <span className="metric-value">Azenium</span>
+                <span className="metric-label">Produit SaaS orienté événements & hospitalité</span>
               </div>
             </div>
-            <div className="hero-image">
-              <div className="hero-image-wrapper">
-                <img 
-                  src="/img/gentil-sur-pc.jpg" 
-                  alt="Gentil Le NoiR au travail"
-                  className="hero-img"
+          </div>
+
+          <div className="hero-panel">
+            <div className="hero-panel-window">
+              <div className="window-bar">
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <div className="hero-visual">
+                <img
+                  src="/img/gentil-sur-pc.jpg"
+                  alt="Gentil Le NoiR devant son ordinateur"
+                  className="hero-portrait"
                   loading="eager"
                 />
-                <div className="hero-image-overlay"></div>
-                <div className="hero-image-badge">
-                  <span className="badge-dot">●</span>
-                  Disponible pour missions
+
+                <div className="floating-card code-card">
+                  <div className="floating-label">Stack</div>
+                  <strong>React • TypeScript • Laravel</strong>
+                </div>
+
+                <div className="floating-card signal-card">
+                  <span className="signal-dot" />
+                  Disponible pour freelance, stage et collaboration
+                </div>
+
+                <div className="floating-card social-card">
+                  <a href="https://github.com/gentil-lenoir" target="_blank" rel="noreferrer" aria-label="GitHub">
+                    GH
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/gentil-lenoir-maliyamungu"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    IN
+                  </a>
+                  <a href="https://dev.to/gentillenoir" target="_blank" rel="noreferrer" aria-label="Dev.to">
+                    DEV
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="hero-scroll-indicator">
-          <span>▼ Scroll</span>
-          <div className="scroll-line"></div>
-        </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="about-section" ref={addToRefs}>
+      <section id="about" className="about-section" ref={registerSection('about')}>
         <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">◈ Qui suis-je ?</span>
-            <h2 className="section-title">À Propos de Moi</h2>
+          <div className="section-heading">
+            <span className="eyebrow">Profil</span>
+            <h2>Un développeur qui pense produit, image et exécution.</h2>
           </div>
-          <div className="about-grid">
-            <div className="about-content">
-              <p className="about-text">
-                <strong translate='no'>Gentil Le NoiR Maliyamungu B.</strong>, né en 2007 au Sud-Kivu 
-                (République Démocratique du Congo), est un développeur web passionné 
-                et electronicien expérimenté de <mark>{gentilAge} ans</mark>.
+
+          <div className="about-layout">
+            <div className="about-story glass-card">
+              <p>
+                Né au Sud-Kivu en République Démocratique du Congo, j&apos;avance avec une vision
+                claire: construire des solutions utiles, solides et belles. Mon travail mélange
+                développement web, sens du détail visuel et compréhension des besoins terrain.
               </p>
-              <p className="about-text">
-                Actuellement étudiant en <strong>Software Engineering à UNILAK/Kigali</strong>, 
-                je combine mes compétences techniques avec une solide formation académique 
-                pour créer des solutions innovantes.
+              <p>
+                À UNILAK/Kigali, je poursuis une formation en Software Engineering tout en
+                réalisant des projets réels. J&apos;aime transformer une idée brute en une interface
+                lisible, performante et suffisamment professionnelle pour inspirer confiance.
               </p>
-              <p className="about-text">
-                En tant que fondateur et Directeur du projet <strong>Azenium</strong>, 
-                je développe une plateforme de création des invitations numériques securisés, de gestion des hôtels et des événelents, et mise des réservations eligne pour les hôtels et les événements publics. dans cet angle, je cherche de partenariat et d'assistance financière 
-                qui vise à révolutionner l'accès aux opportunités en Afrique.
-              </p>
-              <div className="about-highlights">
-                <div className="highlight-item">
-                  <span className="highlight-icon">▲</span>
-                  <span>5+ projets majeurs</span>
-                </div>
-                <div className="highlight-item">
-                  <span className="highlight-icon">◆</span>
-                  <span>Innovation constante</span>
-                </div>
-                <div className="highlight-item">
-                  <span className="highlight-icon">⌂</span>
-                  <span>Collaboration ouverte</span>
-                </div>
-              </div>
             </div>
-            <div className="about-image">
-              <img 
-                src="/img/logo.png" 
-                alt="Gentil Le NoiR"
-                className="about-img"
-              />
-              <div className="about-image-decoration"></div>
+
+            <div className="about-points">
+              <article className="info-tile">
+                <span className="tile-kicker">Positionnement</span>
+                <h3>Développeur full stack</h3>
+                <p>Interfaces, logique métier, intégration backend et amélioration continue.</p>
+              </article>
+
+              <article className="info-tile">
+                <span className="tile-kicker">Méthode</span>
+                <h3>Tech + design + clarté</h3>
+                <p>Un rendu propre ne suffit pas: le produit doit aussi être compréhensible et utile.</p>
+              </article>
+
+              <article className="info-tile">
+                <span className="tile-kicker">Ouverture</span>
+                <h3>Collaboration internationale</h3>
+                <p>Disponible pour partenariat, freelance, mission produit ou équipe de développement.</p>
+              </article>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Azenium Spotlight Section */}
-      <section id="azenium" className="azenium-section" ref={addToRefs}>
-        <div className="container">
-          <div className="azenium-content">
-            <div className="azenium-logos">
-              <img src="/img/azenium/azeni_um_logo_transparent.png" alt="Azenium" className="azenium-logo-normal" />
-              <img src="/img/azenium/logo_transparent.png" alt="Azenium" className="azenium-logo-long" />
-            </div>
-            <h3 className="azenium-title">◆ Plateforme de création des invitations numériques</h3>
-            <p className="azenium-description">
-              <strong>Azenium</strong> est une plateforme SaaS de création des invitations/tickets numériques/virtuels securisés et la gestion des événements et des hôtels et permet de faire des réservations enligne pour les hôtels et les événements publics.
-              <br /> <strong>Nous cherchons des partenaires stratégiques et des inversisseurs pour lancer ce gros projet </strong>
+      <section id="focus" className="focus-section" ref={registerSection('focus')}>
+        <div className="container focus-layout">
+          <div className="section-heading section-heading-left">
+            <span className="eyebrow">Focus produit</span>
+            <h2>Azenium, une vision SaaS ambitieuse pensée pour l’Afrique.</h2>
+            <p>
+              Azenium est une plateforme orientée invitations numériques sécurisées, tickets
+              virtuels, gestion d&apos;événements, gestion hôtelière et réservations en ligne.
             </p>
-            <div className="azenium-badges">
-              <span className="azenium-badge">⚡ En recherche de partenariat</span>
-              <span className="azenium-badge">⚙ Assistance financière</span>
+          </div>
+
+          <div className="focus-panel glass-card">
+            <div className="focus-logos">
+              <img src="/img/azenium/azeni_um_logo_transparent.png" alt="Logo Azenium" />
+              <img src="/img/azenium/logo_transparent.png" alt="Signature Azenium" />
             </div>
-            <a 
-              href="https://partner-azenium.vercel.app/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn btn-primary btn-large"
+
+            <div className="focus-tags">
+              <span>Invitations sécurisées</span>
+              <span>Gestion hôtelière</span>
+              <span>Réservations en ligne</span>
+              <span>Partenariats recherchés</span>
+            </div>
+
+            <a
+              href="https://partner-azenium.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
             >
-              Devenir partenaire
-              <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              Découvrir le projet
+              <span aria-hidden="true">-&gt;</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="services-section" ref={addToRefs}>
+      <section id="services" className="services-section" ref={registerSection('services')}>
         <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">◈ Ce que je fais</span>
-            <h2 className="section-title">Mes Services</h2>
+          <div className="section-heading">
+            <span className="eyebrow">Services</span>
+            <h2>Ce que je peux construire ou améliorer pour toi.</h2>
           </div>
+
           <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon">⌨</div>
-              <h3>Création de Sites Web</h3>
-              <p>Sites vitrines, e-commerce, applications web sur mesure avec React, Node.js et technologies modernes.</p>
-              <a href="/portfolio" className="service-link">Voir réalisations →</a>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">⚙</div>
-              <h3>Correction & Optimisation</h3>
-              <p>Audit, optimisation de performance, correction de bugs et modernisation de sites existants.</p>
-              <a href="/portfolio" className="service-link">Découvrir →</a>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">⌁</div>
-              <h3>Travail en Équipe</h3>
-              <p>Intégration dans vos équipes existantes pour renforcer vos capacités de développement.</p>
-              <a href="/contacts" className="service-link">Me rejoindre →</a>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">⎔</div>
-              <h3>Projets Électroniques</h3>
-              <p>Développement de solutions IoT, projets Arduino, et intégration matériel-logiciel.</p>
-              <a href="/portfolio" className="service-link">Voir projets →</a>
-            </div>
+            {services.map((service) => (
+              <article className="service-card" key={service.title}>
+                <div className="service-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <a href={service.link} className="service-link">
+                  {service.linkLabel}
+                  <span aria-hidden="true">-&gt;</span>
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="skills-section" ref={addToRefs}>
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">◈ Mon expertise</span>
-            <h2 className="section-title">Compétences Techniques</h2>
-          </div>
-          <div className="skills-grid">
-            <div className="skill-category">
-              <h3>▲ Frontend</h3>
-              <div className="skill-items">
-                <div className="skill-item">
-                  <span>React / TypeScript / VueJs</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '90%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>HTML5 / CSS3 / Tailwind</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '95%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>JavaScript</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '92%'}}></div>
-                  </div>
-                </div>
-              </div>
+      <section id="contact" className="contact-section" ref={registerSection('contact')}>
+        <div className="container contact-layout">
+          <div className="contact-column">
+            <div className="section-heading section-heading-left">
+              <span className="eyebrow">Contact</span>
+              <h2>On peut parler projet, mission, stage ou partenariat.</h2>
+              <p>
+                Voici les liens et coordonnées fiables à utiliser pour me joindre rapidement ou
+                consulter mon univers professionnel.
+              </p>
             </div>
-            <div className="skill-category">
-              <h3>◆ Backend</h3>
-              <div className="skill-items">
-                <div className="skill-item">
-                  <span>PHP / Laravel</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '90%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>MySQL / MongoDB</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '85%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>Node.js / Express</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '25%'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h3>⚙ Outils & Soft Skills</h3>
-              <div className="skill-items">
-                <div className="skill-item">
-                  <span>Git / GitHub</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '97%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>Communication & Support</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '90%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>Problem Solving</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '72%'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h3>⌁ Électronique</h3>
-              <div className="skill-items">
-                <div className="skill-item">
-                  <span>Arduino / Microcontrôleurs</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '88%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>Circuit Design</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '52%'}}></div>
-                  </div>
-                </div>
-                <div className="skill-item">
-                  <span>IoT / Capteurs</span>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{width: '55%'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Form Section */}
-      <section id="contact" className="contact-section" ref={addToRefs}>
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">◈ Restons en contact</span>
-            <h2 className="section-title">Travaillons Ensemble</h2>
+            <div className="contact-cards">
+              {contacts.map((item) => (
+                <a className="contact-card" href={item.href} key={`${item.label}-${item.value}`}>
+                  <span className="contact-card-icon">{item.icon}</span>
+                  <span className="contact-card-copy">
+                    <strong>{item.label}</strong>
+                    <span>{item.value}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            <div className="socials-card glass-card">
+              <h3>Réseaux & plateformes</h3>
+              <div className="socials-grid">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-pill"
+                    style={{ '--social-accent': social.accent } as React.CSSProperties}
+                  >
+                    {social.label}
+                    <span aria-hidden="true">-&gt;</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="contact-grid">
-            <div className="contact-info">
-              <h3>Informations de Contact</h3>
-              <div className="contact-details">
-                <div className="contact-detail-item">
-                  <span className="contact-icon">📱</span>
-                  <div>
-                    <h4>WhatsApp</h4>
-                    <p>+243978089552</p>
-                  </div>
-                </div>
-                <div className="contact-detail-item">
-                  <span className="contact-icon">✉</span>
-                  <div>
-                    <h4>Email</h4>
-                    <p>gentillenoir075@outlook.com</p>
-                  </div>
-                </div>
-              </div>
-              <div className="contact-social">
-                <a href="https://www.linkedin.com/in/gentil-lenoir-maliyamungu" className="social-link">LinkedIn</a>
-                <a href="https://github.com/gentil-lenoir" className="social-link">GitHub</a>
-                <a href="https://web.facebook.com/profile.php?id=61576314604030" className="social-link">Facebook</a>
-              </div>
+
+          <div className="contact-form-shell glass-card">
+            <div className="form-intro">
+              <span className="form-badge">Message direct</span>
+              <h3>Présente-moi ton besoin.</h3>
+              <p>Je te répondrai avec une approche claire, technique et orientée résultat.</p>
             </div>
-            <div className="contact-form-wrapper contact-form-container" style={{
-              background: 'rgba(255, 255, 255, 0.03)',
-              padding: '2rem',
-              borderRadius: '1rem',
-              border: '1px solid rgba(255, 255, 255, 0.05)'
-            }}>
-              <ContactForm />
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
