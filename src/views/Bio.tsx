@@ -1,10 +1,58 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import '../css/views/Bio.css';
 import ContactForm from '../components/ContactForm';
 
-const Bio = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+const storyParagraphs = [
+  `Je suis Gentil Le NoiR Maliyamungu, développeur full stack, passionné de produit, d'ingénierie logicielle et de solutions numériques capables d'avoir un impact concret. Mon parcours s'est construit autour d'une idée simple: la technologie n'a de valeur que lorsqu'elle devient lisible, utile et suffisamment bien exécutée pour résoudre un vrai problème.`,
+  `Né en République Démocratique du Congo et aujourd'hui en évolution entre la RDC et Kigali, j'ai développé très tôt une forte curiosité pour les systèmes, les interfaces, l'électronique et la programmation. Cette curiosité ne s'est jamais arrêtée. Elle a progressivement pris la forme d'une discipline de travail, d'une culture du détail et d'une volonté claire de construire des produits sérieux, propres et professionnels.`,
+  `Je poursuis actuellement une formation en Software Engineering à UNILAK, à Kigali. Cette étape académique renforce ce que j'applique déjà sur le terrain: réfléchir en termes d'architecture, de logique, de qualité d'exécution et de progression continue. J'aime apprendre vite, mais j'aime surtout transformer ce que j'apprends en résultats tangibles.`,
+  `Mon profil se situe à l'intersection du développement web, de la logique métier, du design d'interface et de la vision produit. Je peux intervenir sur l'expérience utilisateur, l'intégration frontend, la structuration backend, la cohérence visuelle d'une plateforme et la manière dont un projet est perçu par ses utilisateurs. Pour moi, coder ne consiste pas seulement à faire fonctionner une page; il faut aussi transmettre de la confiance, de la clarté et une impression de qualité.`,
+  `Avec le temps, j'ai travaillé sur des projets variés qui m'ont poussé à m'adapter, à corriger, à itérer et à livrer malgré les contraintes. Cette capacité d'adaptation fait partie de ma méthode. J'aime comprendre le besoin réel derrière une demande, proposer une structure plus solide, puis construire une solution qui reste crédible techniquement et agréable à utiliser.`,
+  `Je m'intéresse aussi à l'électronique et aux systèmes embarqués, ce qui enrichit ma manière de penser les produits. Cette double sensibilité, logiciel et matériel, me pousse à raisonner en systèmes complets plutôt qu'en éléments isolés. Elle renforce ma capacité à concevoir des solutions cohérentes, pragmatiques et ouvertes à l'innovation.`,
+  `Aujourd'hui, je développe également Quevvy Platform, un écosystème produit qui porte une vision plus large autour des solutions numériques modernes. Son premier produit, SiteX Quevvy, s'inscrit dans cette ambition: aider à construire une présence en ligne plus sérieuse, plus nette et plus professionnelle. Ce type de projet résume bien ma direction actuelle: créer, améliorer, structurer et faire monter les produits en qualité.`,
+  `Au-delà des outils et des langages, je tiens à la manière de travailler. J'accorde de l'importance à la collaboration, à l'intégrité, à la progression et à la persévérance. J'apprécie les environnements où l'on cherche non seulement à livrer vite, mais aussi à construire correctement. Je reste donc ouvert aux collaborations, aux missions freelance, aux opportunités d'équipe, aux échanges professionnels et aux projets qui demandent de la précision autant que de l'ambition.`,
+];
 
+const timeline = [
+  { phase: 'Départ', title: 'Curiosité technique très jeune', text: 'Découverte progressive de l’informatique, de l’électronique et de la logique de programmation.' },
+  { phase: 'Base scolaire', title: 'Construction des fondations', text: 'Formation générale, goût pour l’apprentissage autonome et intérêt constant pour les outils numériques.' },
+  { phase: 'Orientation', title: 'Électronique et systèmes', text: 'Approfondissement du raisonnement technique, de l’expérimentation et du lien entre matériel et logiciel.' },
+  { phase: 'Actuel', title: 'Software Engineering à UNILAK', text: 'Consolidation de la vision full stack, produit et ingénierie logicielle dans un cadre académique et pratique.' },
+];
+
+const expertise = [
+  { title: 'Développement frontend', text: 'React, TypeScript, interfaces modernes, hiérarchie visuelle, expérience utilisateur et performance perçue.' },
+  { title: 'Backend & logique métier', text: 'Laravel, Node.js, bases de données, structuration de fonctionnalités et intégration de services.' },
+  { title: 'Vision produit', text: 'Compréhension du besoin, cohérence globale, lisibilité fonctionnelle et montée en qualité d’un projet.' },
+  { title: 'Électronique & IoT', text: 'Arduino, microcontrôleurs, expérimentations embarquées et raisonnement orienté systèmes.' },
+];
+
+const values = [
+  { title: 'Clarté', text: 'J’aime les produits compréhensibles, les interfaces lisibles et les décisions techniques assumées.' },
+  { title: 'Progression', text: 'Je considère chaque projet comme une occasion d’augmenter le niveau de qualité, de méthode et d’exécution.' },
+  { title: 'Intégrité', text: 'Je préfère une parole nette, un code propre et une collaboration honnête à des promesses floues.' },
+  { title: 'Persévérance', text: 'Je reste engagé même lorsque le problème devient complexe, tant qu’il existe une voie sérieuse pour avancer.' },
+];
+
+const projects = [
+  {
+    name: 'Quevvy Platform',
+    desc: 'Écosystème produit en cours de structuration, avec une ambition SaaS et une recherche d’investisseurs.',
+    href: 'https://partner.quevvy.com',
+  },
+  {
+    name: 'SiteX Quevvy',
+    desc: 'Premier produit de Quevvy, orienté création de sites modernes et présence digitale professionnelle.',
+    href: 'https://sitex.quevvy.com',
+  },
+  {
+    name: 'Khaleen Schools',
+    desc: 'Projet orienté automatisation et gestion scolaire, avec une logique métier concrète et utile.',
+    href: 'https://schools.khaleen.com',
+  },
+];
+
+const Bio = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -14,10 +62,10 @@ const Bio = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px' }
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
     );
 
-    const elements = document.querySelectorAll('.bio-paragraph, .bio-quote, .timeline-item, .bio-conclusion');
+    const elements = document.querySelectorAll('.reveal-on-scroll');
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -25,246 +73,208 @@ const Bio = () => {
 
   return (
     <main className="bio-page">
-      {/* Hero Section */}
       <section className="bio-hero">
-        <div className="bio-hero-content">
-          <h1 className="bio-hero-title">
-            <span className="bio-hero-greeting">Qui est</span>
-            <span className="bio-hero-name gradient-text" translate='no'>Gentil Le NoiR</span>
-          </h1>
-          <div className="bio-hero-stats">
-            <div className="bio-stat">
-              <span className="bio-stat-number">2007</span>
-              <span className="bio-stat-label">Naissance</span>
+        <div className="bio-orb bio-orb-one" />
+        <div className="bio-orb bio-orb-two" />
+
+        <div className="container bio-hero-shell">
+          <div className="bio-hero-copy">
+            <span className="bio-kicker">Biographie • Parcours • Vision</span>
+            <h1 className="bio-hero-title">
+              Une trajectoire construite autour du code,
+              <span className="gradient-text"> du produit et de l’exigence.</span>
+            </h1>
+            <p className="bio-hero-description">
+              Cette page raconte qui je suis, comment je travaille, ce que je construis et
+              la direction dans laquelle j’avance comme développeur.
+            </p>
+          </div>
+
+          <div className="bio-hero-aside">
+            <div className="hero-panel reveal-on-scroll">
+              <div className="hero-panel-row">
+                <span>Nom</span>
+                <strong translate="no">Gentil Le NoiR Maliyamungu</strong>
+              </div>
+              <div className="hero-panel-row">
+                <span>Formation</span>
+                <strong>Software Engineering • UNILAK</strong>
+              </div>
+              <div className="hero-panel-row">
+                <span>Positionnement</span>
+                <strong>Développeur full stack & vision produit</strong>
+              </div>
+              <div className="hero-panel-row">
+                <span>Écosystème actuel</span>
+                <strong translate="no">Quevvy Platform / SiteX Quevvy</strong>
+              </div>
             </div>
-            <div className="bio-stat">
-              <span className="bio-stat-number">5+</span>
-              <span className="bio-stat-label">Années d'expérience</span>
-            </div>
-            <div className="bio-stat">
-              <span className="bio-stat-number">7+</span>
-              <span className="bio-stat-label">Projets réalisés</span>
+
+            <div className="hero-stats reveal-on-scroll">
+              <div className="hero-stat-card">
+                <strong>2007</strong>
+                <span>année de naissance</span>
+              </div>
+              <div className="hero-stat-card">
+                <strong>full stack</strong>
+                <span>frontend, backend, produit</span>
+              </div>
+              <div className="hero-stat-card">
+                <strong>RDC / Kigali</strong>
+                <span>ancrage et mobilité</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="bio-hero-decoration">
-          <div className="floating-shape shape-1"></div>
-          <div className="floating-shape shape-2"></div>
-          <div className="floating-shape shape-3"></div>
         </div>
       </section>
 
-      {/* Bio Content */}
-      <section className="bio-content-section" ref={sectionRef}>
+      <section className="bio-content-section">
         <div className="container">
-          {/* Quick Actions */}
-          <div className="bio-actions">
+          <div className="bio-actions reveal-on-scroll">
             <a href="/images" className="bio-action-card">
-              <span className="action-icon">📷</span>
+              <span className="action-icon">IMG</span>
               <div className="action-text">
-                <h3>Galerie d'images</h3>
-                <p>Découvrez mes moments marquants</p>
+                <h3>Galerie</h3>
+                <p>Explorer mes images et quelques moments de parcours.</p>
               </div>
-              <span className="action-arrow">→</span>
+              <span className="action-arrow">-&gt;</span>
             </a>
-            <a href="/cv" target="_blank" rel="noopener noreferrer" className="bio-action-card">
-              <span className="action-icon">📋</span>
+            <a href="/doc/cv.fr.pdf" target="_blank" rel="noreferrer" className="bio-action-card">
+              <span className="action-icon">CV FR</span>
               <div className="action-text">
-                <h3>Lire le CV</h3>
-                <p>Parcourez mon parcours professionnel</p>
+                <h3>CV français</h3>
+                <p>Consulter la version PDF en français.</p>
               </div>
-              <span className="action-arrow">→</span>
+              <span className="action-arrow">-&gt;</span>
             </a>
-            <a href="/doc/gentil_le_noir_c_v.pdf" download className="bio-action-card">
-              <span className="action-icon">▼</span>
+            <a href="/doc/cv.en.pdf" target="_blank" rel="noreferrer" className="bio-action-card">
+              <span className="action-icon">CV EN</span>
               <div className="action-text">
-                <h3>Télécharger le CV</h3>
-                <p>Version PDF à conserver</p>
+                <h3>Resume English</h3>
+                <p>Ouvrir la version anglaise de mon CV.</p>
               </div>
-              <span className="action-arrow">→</span>
+              <span className="action-arrow">-&gt;</span>
             </a>
           </div>
 
-          {/* Biography */}
-          <div className="bio-content">
-            <div className="bio-paragraph" data-aos="fade-up">
-              <p>
-                Je suis <strong translate='no'>Gentil Le Noir Maliyamungu Balegamire</strong>, un <strong>développeur web</strong>, 
-                <strong>programmeur</strong> et <strong>électronicien</strong> passionné par la technologie et l'innovation. 
-                Mon objectif est de concevoir des solutions numériques et matérielles intelligentes qui transforment 
-                les idées en projets concrets et impactants.
-              </p>
+          <div className="bio-reading-shell">
+            <div className="reading-header reveal-on-scroll">
+              <span className="section-kicker">Lecture</span>
+              <h2>Une biographie plus complète, plus claire et plus fidèle à mon évolution.</h2>
             </div>
 
-            <div className="bio-quote" data-aos="fade-up">
+            <div className="bio-longform">
+              {storyParagraphs.map((paragraph, index) => (
+                <div className="bio-paragraph reveal-on-scroll" key={index}>
+                  <p>{paragraph}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bio-quote reveal-on-scroll">
               <blockquote>
-                "Cela semble toujours impossible jusqu'à ce que ce soit fait."
-                <cite>- Nelson Mandela</cite>
+                <p>Je veux construire des produits qui inspirent confiance avant même qu&apos;on les explique.</p>
+                <cite>Gentil Le NoiR</cite>
               </blockquote>
             </div>
 
-            <div className="bio-paragraph" data-aos="fade-up">
-              <p>
-                Né à <strong>Goma</strong>, en <strong>République Démocratique du Congo</strong>, j'ai grandi dans un environnement 
-                où la curiosité et l'expérimentation technologique étaient encouragées dès le plus jeune âge. Très tôt, 
-                j'ai exploré l'informatique, l'électronique et la programmation, ce qui a façonné ma passion pour le 
-                développement de projets innovants.
-              </p>
-            </div>
-
-            <div className="bio-timeline">
-              <h3 className="timeline-title">Parcours</h3>
+            <div className="bio-timeline reveal-on-scroll">
+              <div className="section-block-head">
+                <span className="section-kicker">Parcours</span>
+                <h3>Les étapes qui structurent ma progression.</h3>
+              </div>
               <div className="timeline-grid">
-                <div className="timeline-item" data-aos="fade-right">
-                  <span className="timeline-year">Primaire</span>
-                  <h4>École Matumaini</h4>
-                  <p>Goma, RDC</p>
-                </div>
-                <div className="timeline-item" data-aos="fade-up">
-                  <span className="timeline-year">Secondaire</span>
-                  <h4>Institut Maranatha</h4>
-                  <p>Education de base</p>
-                </div>
-                <div className="timeline-item" data-aos="fade-left">
-                  <span className="timeline-year">Supérieur</span>
-                  <h4>Complexe Scolaire Adventiste Bethel</h4>
-                  <p>Spécialisation en électronique</p>
-                </div>
-                <div className="timeline-item" data-aos="fade-right">
-                  <span className="timeline-year">Actuel</span>
-                  <h4 translate='no'>Software Engineering</h4>
-                  <p>UNILAK/Kigali</p>
-                </div>
+                {timeline.map((item) => (
+                  <article className="timeline-item" key={item.title}>
+                    <span className="timeline-phase">{item.phase}</span>
+                    <h4>{item.title}</h4>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
               </div>
             </div>
 
-            <div className="bio-paragraph" data-aos="fade-up">
-              <p>
-                Professionnellement, j'ai commencé comme stagiaire sur des projets web, développant rapidement des 
-                compétences solides en front-end, back-end et gestion de bases de données. Cette expérience m'a permis 
-                de livrer des projets fonctionnels et esthétiques, intégrant à la fois performance et expérience utilisateur.
-              </p>
-            </div>
-
-            <div className="bio-skills-highlight">
-              <h3>Domaines d'expertise</h3>
+            <div className="bio-skills-highlight reveal-on-scroll">
+              <div className="section-block-head">
+                <span className="section-kicker">Expertise</span>
+                <h3>Les axes sur lesquels j’apporte le plus de valeur.</h3>
+              </div>
               <div className="expertise-grid">
-                <div className="expertise-item">
-                  <span className="expertise-icon">⌨</span>
-                  <h4>Développement Web</h4>
-                  <p>React, Node.js, TypeScript, Laravel</p>
-                </div>
-                <div className="expertise-item">
-                  <span className="expertise-icon">⚡</span>
-                  <h4>Électronique</h4>
-                  <p>Arduino, Raspberry Pi, IoT, Capteurs</p>
-                </div>
-                <div className="expertise-item">
-                  <span className="expertise-icon">📞</span>
-                  <h4>Programmation</h4>
-                  <p>Applications web, mobiles, embarquées</p>
-                </div>
-                <div className="expertise-item">
-                  <span className="expertise-icon">◇</span>
-                  <h4>Gestion de projet</h4>
-                  <p>Leadership, collaboration, méthodologies agiles</p>
-                </div>
+                {expertise.map((item) => (
+                  <article className="expertise-item" key={item.title}>
+                    <h4>{item.title}</h4>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
               </div>
             </div>
 
-            <div className="bio-paragraph" data-aos="fade-up">
-              <p>
-                Parallèlement, j'ai approfondi mes connaissances en électronique et systèmes embarqués avec des 
-                plateformes comme <em>Arduino</em> et <em>Raspberry Pi</em>, ce qui me permet de créer des solutions 
-                hybrides où le logiciel et le matériel travaillent de concert.
-              </p>
-            </div>
-
-            <div className="projects-showcase">
-              <h3>Projets Majeurs</h3>
+            <div className="projects-showcase reveal-on-scroll">
+              <div className="section-block-head">
+                <span className="section-kicker">Produits</span>
+                <h3>Quelques projets qui reflètent ma direction actuelle.</h3>
+              </div>
               <div className="projects-grid">
-                <a href="https://partner.quevvy.com" target="_blank" rel="noopener noreferrer" className="project-card">
-                  <span className="project-name">Quevvy Platform</span>
-                  <span className="project-desc">Écosystème produit qui porte SiteX Quevvy et d&apos;autres solutions digitales</span>
-                  <span className="project-link">→</span>
-                </a>
-                <a href="https://sitex.quevvy.com" target="_blank" rel="noopener noreferrer" className="project-card">
-                  <span className="project-name">Khaleen Schools</span>
-                  <span className="project-desc">Automatisation scolaire, MIS, et Gestion</span>
-                  <span className="project-link">→</span>
-                </a>
-                <a href="/portfolio" className="project-card">
-                  <span className="project-name">SiteX Quevvy</span>
-                  <span className="project-desc">Premier produit de Quevvy pour la création de sites et pages web modernes</span>
-                  <span className="project-link">→</span>
-                </a>
+                {projects.map((project) => (
+                  <a
+                    key={project.name}
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-card"
+                  >
+                    <span className="project-name">{project.name}</span>
+                    <span className="project-desc">{project.desc}</span>
+                    <span className="project-link">-&gt;</span>
+                  </a>
+                ))}
               </div>
             </div>
 
-            <div className="bio-paragraph" data-aos="fade-up">
-              <p>
-                Mon approche repose sur l'innovation continue, la curiosité et l'apprentissage permanent. Je suis 
-                toujours à l'affût des nouvelles technologies pour offrir des solutions à la fois créatives, fiables 
-                et adaptées aux besoins réels des utilisateurs.
-              </p>
-            </div>
-
-            <div className="values-section">
-              <h3>Mes Valeurs</h3>
+            <div className="values-section reveal-on-scroll">
+              <div className="section-block-head">
+                <span className="section-kicker">Valeurs</span>
+                <h3>La manière dont j’aime travailler et progresser.</h3>
+              </div>
               <div className="values-grid">
-                <div className="value-item">
-                  <span className="value-icon">◇</span>
-                  <h4>Collaboration</h4>
-                  <p>Travailler ensemble pour de meilleurs résultats</p>
-                </div>
-                <div className="value-item">
-                  <span className="value-icon">⚙</span>
-                  <h4>Intégrité</h4>
-                  <p>Transparence et honnêteté dans chaque projet</p>
-                </div>
-                <div className="value-item">
-                  <span className="value-icon">██</span>
-                  <h4>Persévérance</h4>
-                  <p>Ne jamais abandonner face aux défis</p>
-                </div>
-                <div className="value-item">
-                  <span className="value-icon">📖</span>
-                  <h4>Partage</h4>
-                  <p>Transmettre les connaissances à la communauté</p>
-                </div>
+                {values.map((value) => (
+                  <article className="value-item" key={value.title}>
+                    <h4>{value.title}</h4>
+                    <p>{value.text}</p>
+                  </article>
+                ))}
               </div>
             </div>
 
-            <div className="bio-conclusion" data-aos="fade-up">
+            <div className="bio-conclusion reveal-on-scroll">
               <p>
-                En résumé, je suis un <strong>développeur</strong>, <strong>programmeur</strong>, 
-                <strong>informaticien</strong> et <strong>électronicien</strong> passionné, capable de transformer 
-                des idées en solutions concrètes et de collaborer pour créer un impact réel. Je suis toujours ouvert 
-                aux nouvelles collaborations, projets ou échanges de connaissances.
+                En résumé, je me définis comme un développeur en construction ambitieuse, déjà
+                orienté exécution, qualité et cohérence produit. J’avance avec sérieux, curiosité,
+                capacité d’adaptation et volonté de faire monter chaque projet d’un niveau. Si une
+                équipe, une entreprise ou un partenaire cherche quelqu’un de motivé, impliqué et
+                réellement attentif à la qualité du rendu final, alors nous aurons probablement une
+                bonne conversation.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form */}
       <section className="bio-contact-section">
         <div className="container">
-          <div className="bio-contact-header">
-            <h2 className="bio-contact-title">Travaillons ensemble</h2>
-            <p className="bio-contact-description">
-              Vous avez un projet ? Une idée ? Une opportunité de collaboration ?
-              Je suis à votre écoute pour en discuter.
-            </p>
-          </div>
-          <div className="contact-form-wrapper contact-form-container" style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            padding: '2rem',
-            borderRadius: '1rem',
-            border: '1px solid rgba(255, 255, 255, 0.05)',
-            marginTop: '2rem'
-          }}>
-            <ContactForm />
+          <div className="bio-contact-shell reveal-on-scroll">
+            <div className="bio-contact-header">
+              <span className="section-kicker">Prendre contact</span>
+              <h2>Si cette biographie te parle, on peut aller plus loin.</h2>
+              <p>
+                Mission, collaboration, stage, produit ou simple échange professionnel: tu peux
+                m&apos;écrire ici et préparer un message clair en quelques secondes.
+              </p>
+            </div>
+
+            <div className="contact-form-wrapper">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
