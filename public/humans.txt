@@ -7,7 +7,7 @@ Location: Goma, Nord-Kivu, République Démocratique du Congo
 Timezone: Africa/Lubumbashi (GMT+2)
 GitHub: @gentil-lenoir
 LinkedIn: /in/gentil-lenoir-maliyamungu
-Twitter: @azeniumplatform
+Twitter: @quevvyplatform
 Instagram: @gentil.lenoir
 
 /* SKILLS */
@@ -19,7 +19,7 @@ DevOps: Git, Docker, Vercel, Netlify, CI/CD
 Design: Figma, Adobe XD, UI/UX Principles
 
 /* PROJECTS */
-- Azenium Platform (Plateforme éducative) - React/Laravel
+- Quevvy Platform (Écosystème produit SaaS) - React/Laravel
 - Goma Digital (Site vitrine) - React/Node
 - Congo Business Directory (Annuaire) - Laravel/MySQL
 - Portfolio personnel (Site vitrine) - React

@@ -30,23 +30,23 @@ const skillsData = [
 
 const portfolioData = [
   {
-    id: "azenium",
-    img: "/img/azenium/general-logo.jpeg",
-    title: "Azenium",
-    status: <>⚡ En recherche de partenariat</>,
-    desc: "Plateforme innovante de partenariat et d'assistance financière. Solution complète pour faciliter l'accès aux opportunités en Afrique.",
-    technologies: ["Laravel", "React.js", "MySQL", "Electron.js", "Flutterwave & Paypal"],
-    link: "https://partner-azenium.vercel.app/",
+    id: "quevvy-platform",
+    img: "/img/quevvy/quevvy logo.png",
+    title: "Quevvy Platform",
+    status: <>⚡ Investisseurs recherchés</>,
+    desc: "Plateforme produit ambitieuse qui construit des solutions numériques orientées business, présence en ligne et croissance digitale.",
+    technologies: ["Laravel", "React.js", "TypeScript", "MySQL", "SaaS Strategy"],
+    link: "https://partner.quevvy.com",
     github: "#",
     featured: true
   },
   {
-    id: "site-builder",
-    img: "/img/netApear.png",
-    title: "Site-Builder",
-    desc: "Plateforme de création de mini-sites et pages web responsives. Interface drag-and-drop intuitive.",
-    technologies: ["React", "TypeScript", "Tailwind", "Node.js"],
-    link: "https://site-builder.site",
+    id: "sitex-quevvy",
+    img: "/img/quevvy/sitex/sitex.logo.png",
+    title: "SiteX Quevvy",
+    desc: "Premier produit de Quevvy Platform. Une solution moderne pour créer des sites et expériences web avec une image professionnelle.",
+    technologies: ["React", "TypeScript", "UI/UX", "Brand System", "Product Design"],
+    link: "https://sitex.quevvy.com",
     github: "#"
   },
   {
@@ -129,48 +129,50 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Azenium Spotlight - Section Spéciale */}
+      {/* Quevvy Spotlight - Section Spéciale */}
       <section className="azenium-spotlight">
         <div className="azenium-spotlight-container">
           <div className="azenium-spotlight-content">
             <div className="azenium-badge">◆ Projet Phare</div>
             <div className="azenium-logos">
-              <img src="/img/azenium/logo_transparent.png" alt="Azenium" className="azenium-logo" />
-              <img src="/img/azenium/azeni_um_logo_transparent.png" alt="Azenium" className="azenium-logo-long" />
+              <img src="/img/quevvy/quevvy logo.png" alt="Quevvy Platform" className="azenium-logo" />
+              <img src="/img/quevvy/sitex/sitex.logo.png" alt="SiteX Quevvy" className="azenium-logo-long" />
             </div>
             <h2 className="azenium-spotlight-title">
-              Plateforme de création des invitations numériques
+              Quevvy Platform & SiteX Quevvy
             </h2>
             <p className="azenium-spotlight-description">
-              <strong>Azenium</strong> est une plateforme SaaS de création des invitations/tickets numériques/virtuels securisés et la gestion des événements et des hôtels et permet de faire des réservations enligne pour les hôtels et les événements publics.
-              <br /> <strong>Nous cherchons des partenaires stratégiques et des inversisseurs pour lancer ce gros projet </strong>
+              <strong>Quevvy Platform</strong> est mon écosystème produit actuel. Son premier produit,
+              <strong> SiteX Quevvy</strong>, est une solution orientée création de sites web modernes,
+              identité digitale et présence professionnelle en ligne.
+              <br /> <strong>Quevvy recherche actuellement des investisseurs et des partenaires stratégiques.</strong>
             </p>
             <div className="azenium-features">
               <div className="azenium-feature">
                 <span className="feature-icon">⌁</span>
                 <div>
-                  <h4>Partenariat stratégique</h4>
-                  <p>Rejoignez-nous pour développer ensemble</p>
+                  <h4>Vision produit claire</h4>
+                  <p>Une plateforme pensée pour bâtir plusieurs produits numériques forts</p>
                 </div>
               </div>
               <div className="azenium-feature">
                 <span className="feature-icon">⚙</span>
                 <div>
-                  <h4>Assistance financière</h4>
-                  <p>Investissez dans l'innovation africaine</p>
+                  <h4>SiteX Quevvy</h4>
+                  <p>Le premier produit de Quevvy pour la création de sites modernes</p>
                 </div>
               </div>
               <div className="azenium-feature">
                 <span className="feature-icon">▲</span>
                 <div>
-                  <h4>Croissance accélérée</h4>
-                  <p>Scale-up vers de nouveaux marchés</p>
+                  <h4>Investissement & expansion</h4>
+                  <p>Ouverture à des investisseurs pour accélérer la croissance</p>
                 </div>
               </div>
             </div>
             <div className="azenium-cta">
               <a 
-                href="https://partner-azenium.vercel.app/" 
+                href="https://partner.quevvy.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn-azenium"
@@ -185,16 +187,16 @@ const Portfolio = () => {
           </div>
           <div className="azenium-spotlight-stats">
             <div className="stat-circle">
-              <span className="stat-circle-number">2024</span>
-              <span className="stat-circle-label">Lancement</span>
+              <span className="stat-circle-number">01</span>
+              <span className="stat-circle-label">Produit lancé</span>
             </div>
             <div className="stat-circle">
-              <span className="stat-circle-number">3</span>
-              <span className="stat-circle-label">Pays cibles</span>
+              <span className="stat-circle-number">SaaS</span>
+              <span className="stat-circle-label">Vision plateforme</span>
             </div>
             <div className="stat-circle">
-              <span className="stat-circle-number">∞</span>
-              <span className="stat-circle-label">Potentiel</span>
+              <span className="stat-circle-number">GO</span>
+              <span className="stat-circle-label">Invest ready</span>
             </div>
           </div>
         </div>

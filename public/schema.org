@@ -55,8 +55,8 @@
         },
         {
           "@type": "WorkingGroup",
-          "name": "Azenium Platform",
-          "sameAs": "https://www.azenium.com"
+          "name": "Quevvy Platform",
+          "sameAs": "https://quevvy.com"
         }],
       "knowsAbout": [
         "React.js", "Laravel", "JavaScript", "TypeScript", "PHP", "Node.js",
@@ -148,11 +148,11 @@
           {
             "@type": "CreativeWork",
             "position": 1,
-            "name": "Azenium Platform",
-            "description": "Plateforme de création des invitations/tickets virtuels pour événements, permet les réservations, paiements et gestion d'événements en ligne pour des hôtels, restaurants et organisateurs d'événements. (https://azenium.com)",
-            "url": "https://azenium.com",
-            "image": "https://gentil.quevvy.com/images/project-azenium.jpg",
-            "keywords": ["Azenium", "Azenium Platform", "Laravel", "Events", "Reservations", "Paiements", "Invitations virtuels", "tickets virtuels", "virtuels"]
+            "name": "Quevvy Platform",
+            "description": "Plateforme produit orientée business digital et croissance SaaS. Elle porte notamment SiteX Quevvy, son premier produit dédié à la création de sites web modernes. (https://quevvy.com)",
+            "url": "https://quevvy.com",
+            "image": "https://gentil.quevvy.com/img/quevvy/quevvy%20logo.png",
+            "keywords": ["Quevvy", "Quevvy Platform", "SiteX Quevvy", "Laravel", "React", "SaaS", "Web", "Product"]
           },
           {
             "@type": "CreativeWork",
@@ -160,7 +160,7 @@
             "name": "Gentil Le NoiR Portfolio",
             "description": "Mon portfolio professionnel personnel, développé avec React.js et Tailwind CSS, hébergé sur Vercel. Présente mes compétences, projets et expériences en développement web. (https://gentil.quevvy.com)",
             "url": "https://gentil.quevvy.com",
-            "image": "https://gentil.quevvy.com/img/azenium/general-logo.jpeg",
+            "image": "https://gentil.quevvy.com/img/quevvy/quevvy%20logo.png",
             "keywords": ["Portfolio", "React.js", "Tailwind CSS", "Vercel", "Développement web", "Projets personnels"]
           }
       }

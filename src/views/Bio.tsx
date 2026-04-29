@@ -183,19 +183,19 @@ const Bio = () => {
             <div className="projects-showcase">
               <h3>Projets Majeurs</h3>
               <div className="projects-grid">
-                <a href="https://partner-azenium.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-card">
-                  <span className="project-name">Azenium</span>
-                  <span className="project-desc">Plateforme de création des invitations virtuels</span>
+                <a href="https://partner.quevvy.com" target="_blank" rel="noopener noreferrer" className="project-card">
+                  <span className="project-name">Quevvy Platform</span>
+                  <span className="project-desc">Écosystème produit qui porte SiteX Quevvy et d&apos;autres solutions digitales</span>
                   <span className="project-link">→</span>
                 </a>
-                <a href="/portfolio" className="project-card">
+                <a href="https://sitex.quevvy.com" target="_blank" rel="noopener noreferrer" className="project-card">
                   <span className="project-name">Khaleen Schools</span>
                   <span className="project-desc">Automatisation scolaire, MIS, et Gestion</span>
                   <span className="project-link">→</span>
                 </a>
                 <a href="/portfolio" className="project-card">
-                  <span className="project-name">Site Builder</span>
-                  <span className="project-desc">Plateforme de création des sites et des pages web</span>
+                  <span className="project-name">SiteX Quevvy</span>
+                  <span className="project-desc">Premier produit de Quevvy pour la création de sites et pages web modernes</span>
                   <span className="project-link">→</span>
                 </a>
               </div>

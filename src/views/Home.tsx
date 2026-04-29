@@ -164,7 +164,7 @@ const Home = () => {
 
             <p className="hero-description">
               Je suis <span translate="no">Gentil Le NoiR Maliyamungu</span>, développeur full stack,
-              étudiant en Software Engineering à UNILAK et fondateur d&apos;Azenium. Je crée des
+              étudiant en Software Engineering à UNILAK et fondateur de <span translate="no">Quevvy Platform</span>. Je crée des
               produits numériques qui allient esthétique, clarté métier et ambition technique.
             </p>
 
@@ -193,8 +193,8 @@ const Home = () => {
                 <span className="metric-label">Frontend, backend, UX et vision produit</span>
               </div>
               <div className="metric-card">
-                <span className="metric-value">Azenium</span>
-                <span className="metric-label">Produit SaaS orienté événements & hospitalité</span>
+                <span className="metric-value">Quevvy</span>
+                <span className="metric-label">Plateforme produit orientée digital business & SaaS</span>
               </div>
             </div>
           </div>
@@ -295,28 +295,29 @@ const Home = () => {
         <div className="container focus-layout">
           <div className="section-heading section-heading-left">
             <span className="eyebrow">Focus produit</span>
-            <h2>Azenium, une vision SaaS ambitieuse pensée pour l’Afrique.</h2>
+            <h2>Quevvy Platform, une vision SaaS ambitieuse pensée pour l’Afrique.</h2>
             <p>
-              Azenium est une plateforme orientée invitations numériques sécurisées, tickets
-              virtuels, gestion d&apos;événements, gestion hôtelière et réservations en ligne.
+              Quevvy Platform développe des produits numériques orientés business, présence en
+              ligne et croissance produit. <span translate="no">SiteX Quevvy</span> en est le premier
+              produit, dédié à la création de sites et d&apos;expériences web modernes.
             </p>
           </div>
 
           <div className="focus-panel glass-card">
             <div className="focus-logos">
-              <img src="/img/azenium/azeni_um_logo_transparent.png" alt="Logo Azenium" />
-              <img src="/img/azenium/logo_transparent.png" alt="Signature Azenium" />
+              <img src="/img/quevvy/quevvy icon.png" alt="Logo Quevvy Platform" />
+              <img src="/img/quevvy/quevvy logo.png" alt="Signature Quevvy Platform" />
             </div>
 
             <div className="focus-tags">
-              <span>Invitations sécurisées</span>
-              <span>Gestion hôtelière</span>
-              <span>Réservations en ligne</span>
-              <span>Partenariats recherchés</span>
+              <span>Quevvy Platform</span>
+              <span>SiteX Quevvy</span>
+              <span>Présence web moderne</span>
+              <span>Investisseurs recherchés</span>
             </div>
 
             <a
-              href="https://partner-azenium.vercel.app/"
+              href="https://partner.quevvy.com"
               target="_blank"
               rel="noreferrer"
               className="btn btn-primary"
