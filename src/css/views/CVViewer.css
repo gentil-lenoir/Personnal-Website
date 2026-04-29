@@ -1,0 +1,126 @@
+/* CVViewer.css */
+
+.cvv-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #07111f;
+  overflow: hidden;
+}
+
+.cvv-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(10, 20, 35, 0.92);
+  border-bottom: 1px solid rgba(110, 168, 254, 0.16);
+  backdrop-filter: blur(16px);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.cvv-label {
+  flex: 1;
+  color: #bfd0ea;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cvv-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(110, 168, 254, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f4f8ff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cvv-back-btn:hover {
+  background: rgba(110, 168, 254, 0.12);
+  border-color: rgba(110, 168, 254, 0.38);
+}
+
+.cvv-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.cvv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(110, 168, 254, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f4f8ff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.cvv-btn:hover {
+  background: rgba(110, 168, 254, 0.12);
+  border-color: rgba(110, 168, 254, 0.38);
+  transform: translateY(-1px);
+}
+
+.cvv-btn-primary {
+  background: linear-gradient(135deg, #6ea8fe 0%, #4ce0d2 60%, #ffd166 100%);
+  border-color: transparent;
+  color: #06101d;
+}
+
+.cvv-btn-primary:hover {
+  background: linear-gradient(135deg, #5a96f0 0%, #38cec0 60%, #ebbf50 100%);
+  border-color: transparent;
+}
+
+.cvv-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+/* Fallback erreur */
+.cvv-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  height: 100vh;
+  background: #07111f;
+  color: #bfd0ea;
+  text-align: center;
+  padding: 2rem;
+}
+
+.cvv-error code {
+  color: #ffd166;
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .cvv-label {
+    display: none;
+  }
+
+  .cvv-btn span,
+  .cvv-back-btn span {
+    display: none;
+  }
+}
